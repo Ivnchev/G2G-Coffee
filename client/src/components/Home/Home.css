@@ -1,0 +1,177 @@
+.home-container {
+    width         : 100%;
+    height        : 100%;
+    display       : flex;
+    flex-direction: column;
+    font-family   : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.home-top-products {
+    /* border-bottom: 3px solid rgb(147, 212, 8); */
+    position              : relative;
+    /* background         : repeating-linear-gradient(-45deg, rgb(37, 36, 35) 0, rgb(37, 36, 35) 25%, rgb(43, 43, 41) 0, rgb(43, 43, 41) 38%) 0 / 20px 20px; */
+    /* background         : url('https://cdn.pixabay.com/photo/2017/11/08/04/26/rock-2929208_960_720.jpg'); */
+    background-repeat     : no-repeat;
+    background-position   : center top;
+    background-size       : cover;
+}
+
+.home-top-products::before {
+    content            : '';
+    height             : 29rem;
+    width              : 6000px;
+    position           : absolute;
+    left               : -190%;
+    /* background      : repeating-linear-gradient(-45deg, rgb(37, 36, 35) 0, rgb(37, 36, 35) 25%, rgb(43, 43, 41) 0, rgb(43, 43, 41) 38%) 0 / 20px 20px; */
+    background         : url('https://cdn.pixabay.com/photo/2017/11/08/04/26/rock-2929208_960_720.jpg');
+    background-repeat  : no-repeat;
+    background-position: center top;
+    background-size    : cover;
+}
+
+.home-top-products-wrapper::before {
+    content            : '';
+    background         : url('https://www.seekpng.com/png/full/127-1273182_graphic-freeuse-download-coffee-tree-drawing-at-getdrawings.png');
+    background-repeat  : no-repeat;
+    background-position: center top;
+    opacity            : .5;
+    position           : absolute;
+    height             : 25rem;
+    width              : 31rem;
+    right              : -15rem;
+    top                : 0;
+}
+
+
+
+.home-top-products-title {
+    position  : relative;
+    text-align: center;
+    font-size : 1.5rem;
+    color     : darkgray;
+    margin    : 40px 0px;
+    font-size : 30px;
+}
+
+.products-container {
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    justify-content: space-between;
+    z-index        : 1;
+    position       : relative;
+    margin-top     : 1rem;
+    min-height     : 370px;
+}
+
+.offer-container {
+    display       : flex;
+    flex-direction: row;
+}
+
+
+.daily-offer {
+    display: flex;
+}
+
+.daily-offer-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : stretch;
+    align-content : space-around;
+    flex-wrap     : wrap;
+    padding       : 0 2rem;
+}
+
+.daily-hot-offers {
+    position: relative;
+}
+
+.daily-offer-container {
+    background: rgb(37, 36, 35);
+    background: linear-gradient(0deg, rgba(246, 231, 207, 0.5) 0%, rgba(235, 207, 165) 71%, rgba(246, 231, 207, 0.5) 95%)
+}
+
+.accessory-offers {
+    flex-grow: 1;
+}
+
+.top-accessories {
+    display       : flex;
+    flex-direction: row;
+    flex-wrap     : wrap;
+    position      : relative;
+
+}
+
+.first-accessory-wrapper,
+.second-accessory-wrapper {
+    margin: 10px;
+}
+
+.second-accessory-wrapper {
+    top     : 44vh;
+    left    : 23vw;
+    position: absolute;
+}
+
+
+@media all and (max-width: 1300px) {
+    .products-container {
+        flex-wrap      : wrap;
+        justify-content: center;
+    }
+
+    .second-accessory-wrapper {
+        left    : 0vw;
+        top     : 0vh;
+        position: relative;
+    }
+}
+
+@media all and (max-width: 850px) {
+    .products-container {
+        flex-direction: column;
+        min-height    : 580px;
+    }
+
+    .home-top-products::before {
+        height: 42rem;
+    }
+
+    .home-top-products-wrapper::before {
+        right: -25rem;
+    }
+
+    .home-container {
+        align-items: center;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .products-container {
+        flex-direction: column;
+    }
+
+    .offer-container {
+        display       : flex;
+        flex-direction: column;
+    }
+
+    .top-accessories {
+        display       : flex;
+        flex-direction: column;
+    }
+
+}
+
+@media all and (max-width: 420px) {
+    .home-top-products::before {
+        height: 64rem;
+    }
+
+    .products-container {
+        min-height : 870px;
+        align-items: stretch;
+    }
+}

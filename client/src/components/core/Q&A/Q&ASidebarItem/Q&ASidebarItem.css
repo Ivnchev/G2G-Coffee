@@ -1,0 +1,18 @@
+.q-and-a-sidebar-element {
+    height         : 10vh;
+    width          : 300px;
+    box-shadow     : 0 0 6px lightgrey;
+    position       : fixed;
+    margin-top     : 80px;
+    background     : white;
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    justify-content: space-between;
+}
+
+.q-and-a-sidebar-element p,
+.q-and-a-sidebar-element span {
+    text-align: center;
+    margin    :  0 1.2rem;
+}

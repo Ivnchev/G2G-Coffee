@@ -1,0 +1,47 @@
+.q-and-a-element {
+    margin  : 10px;
+    border  : 1px solid rgb(147, 212, 8);
+    position: relative;
+    cursor  : pointer;
+}
+
+.q-and-a-element::after {
+    position     : absolute;
+    content      : '';
+    width        : 10px;
+    height       : 10px;
+    border-bottom: 1px solid rgb(147, 212, 8);
+    border-left  : 1px solid rgb(147, 212, 8);
+    right        : 2rem;
+    top          : 1.5rem;
+    transform    : rotate(315deg);
+}
+
+.q-and-a-element.active::after {
+    position     : absolute;
+    content      : '';
+    width        : 10px;
+    height       : 10px;
+    border-bottom: 1px solid rgb(147, 212, 8);
+    border-left  : 1px solid rgb(147, 212, 8);
+    right        : 2rem;
+    top          : 1.5rem;
+    transform    : rotate(136deg);
+}
+
+.q-and-a-element h3 {
+    margin-left: 2rem;
+}
+
+.q-and-a-element-content {
+    display: none;
+}
+
+.q-and-a-element-content.visible {
+    display: block;
+}
+
+.q-and-a-element-paragraph {
+    padding   : 15px;
+    text-align: justify;
+}

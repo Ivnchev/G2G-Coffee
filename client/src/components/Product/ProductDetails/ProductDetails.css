@@ -1,0 +1,125 @@
+.product-details-layout {
+    height: 100%;
+    width : 100%;
+}
+
+.product-details-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+
+}
+
+.product-details-container {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    width         : 60%;
+    margin        : 10%;
+    background    : white;
+    padding       : 3rem;
+}
+
+.product-details-container h1 {
+    font-size: 40px;
+    margin   : 1rem;
+}
+
+.product-details-content-wrapper {
+    display       : flex;
+    flex-direction: row;
+    align-items   : flex-start;
+}
+
+.product-details-description,
+.product-image-details {
+    margin: 20px;
+}
+
+.product-details-inner-wrapper {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-between;
+}
+
+.product-details-buttons {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    width          : 70%;
+    box-sizing     : border-box;
+    margin-top     : 5rem;
+}
+
+.product-details-buttons a {
+    text-decoration: none;
+    color          : black;
+}
+
+
+
+.product-details-order-btn-wrapper,
+.product-details-fav-btn-wrapper {
+    display        : flex;
+    align-items    : center;
+    cursor         : pointer;
+    padding        : .5rem;
+    width          : 100%;
+    justify-content: center;
+}
+
+.product-details-fav-btn-wrapper {
+    width: 50%;
+}
+
+.product-details-order-btn-wrapper:hover,
+.product-details-fav-btn-wrapper:hover {
+    border-bottom: 1px solid rgb(147, 212, 8);
+}
+
+
+.product-details-order-btn-wrapper:hover i {
+    color: rgba(112, 163, 2, 0.8);
+}
+
+.product-details-fav-btn-wrapper:hover i {
+    color: rgb(209, 131, 144);
+}
+
+.fas.fa-shopping-cart {
+    color    : rgb(147, 212, 8);
+    font-size: 2rem;
+    margin   : 10px;
+}
+
+.fas.fa-heart:hover {
+    color : rgb(209, 131, 144);
+    cursor: pointer;
+}
+
+.fas.fa-heart {
+    color    : pink;
+    font-size: 2rem;
+    margin   : 10px;
+}
+
+
+@media all and (max-width: 900px) {
+    .product-details-content-wrapper {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .product-details-buttons {
+        display       : flex;
+        align-items   : flex-start;
+        width         : 70%;
+        box-sizing    : border-box;
+        margin-top    : 0rem;
+        flex-direction: column;
+    }
+}

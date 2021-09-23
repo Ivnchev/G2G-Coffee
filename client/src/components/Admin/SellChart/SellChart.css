@@ -1,0 +1,14 @@
+.sell-chart-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    width         : 100%;
+}
+
+.sell-chart {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    width         : 100%;
+}
+

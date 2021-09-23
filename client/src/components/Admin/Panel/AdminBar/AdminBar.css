@@ -1,0 +1,47 @@
+.admin-bar-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    width         : 100%;
+    margin        : 2rem;
+}
+
+.admin-bar-container {
+    width         : 100%;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    background    : rgba(105, 168, 105, 0.8);
+    border-radius : 5px;
+}
+
+.admin-bar {
+    width          : 80%;
+    list-style     : none;
+    display        : flex;
+    flex-direction : row;
+    align-items    : center;
+    justify-content: space-between;
+    margin         : 0px;
+    padding-left   : 0;
+}
+
+.admin-bar li {
+    padding   : 20px;
+    width     : 100%;
+    text-align: center;
+    cursor    : pointer;
+}
+
+.admin-bar li:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 3px 1px lightgrey;
+    overflow: hidden;
+}
+
+
+@media all and (max-width: 500px) {
+    .admin-bar {
+        flex-direction: column;
+    }
+}

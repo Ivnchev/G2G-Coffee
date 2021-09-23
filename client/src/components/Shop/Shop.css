@@ -1,0 +1,53 @@
+.shop-wrapper {
+    display       : flex;
+    flex-direction: column;
+}
+
+.shop-products-container {
+    display       : flex;
+    flex-direction: column;
+    flex-wrap     : wrap;
+    margin        : 1rem 0;
+}
+
+.shop-filter-wrapper {
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-around;
+    flex-wrap      : wrap;
+    margin-bottom  : 4rem;
+}
+
+.shop-sort-container select,
+.shop-sort-container button,
+.shop-filter-container input,
+.shop-filter-container button {
+    padding: 0.5rem;
+    margin : 5px;
+}
+
+.shop-filter-container button,
+.shop-sort-container button {
+    font-size       : 16px;
+    font-weight     : bold;
+    background-color: rgb(168, 219, 168);
+    border-radius   : 4px;
+    border          : 1px solid gray;
+    cursor          : pointer;
+}
+
+.shop-filter-container button:hover,
+.shop-sort-container button:hover {
+    background: rgb(105, 168, 105);
+}
+
+.shop-sort-container select,
+.shop-filter-container input {
+    font-size       : 16px;
+    font-weight     : bold;
+    background-color: rgb(224, 241, 224);
+    border-radius   : 4px;
+    border          : 1px solid lightgray;
+}
+
+

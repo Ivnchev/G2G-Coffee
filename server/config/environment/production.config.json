@@ -1,0 +1,21 @@
+{
+    "production": true,
+    "server" : {
+        "PORT": 80,
+        "CORS": {
+            "urls": [ "http://localhost:3000", "https://courier-workshop.herokuapp.com/", "http://localhost" ],
+            "credentials": true,
+            "exposedHeaders": []
+        },
+        "baseUrl": "https://courier-workshop.herokuapp.com/"
+    },
+    "database": {
+        "DB_URI": ""
+    },
+    "security": {
+        "SECRET": "TOP_SECRET",
+        "COOKIE_NAME": "auth_cookie",
+        "HEADER": "x-auth",
+        "SALT_ROUNDS": 10
+    }
+}

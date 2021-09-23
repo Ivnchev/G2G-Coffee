@@ -1,0 +1,55 @@
+.coffee-timer {
+    width   : 85%;
+    position: absolute;
+    top     : -8rem;
+}
+
+
+.profile-coffee-taimer {
+    height        : 100%;
+    width         : 100%;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.coffee-inner-wrapper {
+    display    : flex;
+    align-items: center;
+}
+
+.coffee-inner-wrapper div {
+    margin: 0 1rem;
+}
+
+.profile-coffee-taimer-wrapper {
+    height         : 80px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.coffee-taimer-minutes h2,
+.coffee-taimer-dots h2,
+.coffee-taimer-seconds h2 {
+    font-size : 3rem;
+    margin: 0;
+}
+
+@media all and (max-width : 780px) {
+    .coffee-timer {
+        top: 0rem;
+    }
+
+    .coffee-taimer-minutes h2,
+    .coffee-taimer-dots h2,
+    .coffee-taimer-seconds h2 {
+        font-size: 2rem;
+        margin   : 0;
+    }
+
+    .coffee-inner-wrapper div {
+        margin: 0 .5rem;
+    }
+
+}

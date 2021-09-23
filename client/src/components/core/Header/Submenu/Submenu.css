@@ -1,0 +1,41 @@
+.coffee-bar-submenu-wrapper {
+    padding-left : 0%;
+    position     : absolute;
+    top          : 5rem;
+    right        : 0rem;
+    height       : 14rem;
+    background   : rgba(0, 0, 0, 0.8);
+    width        : 50%;
+    border-radius: 3px;
+}
+
+
+
+.coffee-bar-submenu {
+    position       : sticky;
+    padding-left   : 0%;
+    list-style     : none;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    margin         : 0%;
+    height         : 100%;
+    justify-content: space-around;
+}
+
+.coffee-bar-submenu li {
+    padding   : 5px 0;
+    width     : 100%;
+    text-align: center;
+}
+
+.coffee-bar-submenu-link {
+    color : white;
+    cursor: pointer;
+}
+
+.coffee-bar-submenu-li:hover {
+    background: rgba(66, 66, 66, 0.8);;
+    cursor: pointer;
+    z-index: 1;
+}

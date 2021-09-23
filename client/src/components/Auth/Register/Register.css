@@ -1,0 +1,150 @@
+.register-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    min-height    : 80vh;
+    position      : relative;
+}
+
+.register-wrapper::before {
+    position         : absolute;
+    content          : '';
+    width            : 30%;
+    height           : 40%;
+    background       : url('https://www.seekpng.com/png/full/127-1273182_graphic-freeuse-download-coffee-tree-drawing-at-getdrawings.png');
+    background-repeat: no-repeat;
+    background-size  : cover;
+    z-index          : 0;
+    right            : -5rem;
+    opacity          : .5;
+}
+
+
+.register-form {
+    max-width      : 20rem;
+    min-width      : 15rem;
+    height         : 100%;
+    padding        : 1rem 5rem;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-evenly;
+    margin         : 5rem;
+    position       : relative;
+    background     : rgba(255, 255, 255, 0.8);
+}
+
+.register-input {
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+    position      : relative;
+    margin        : .5rem 0;
+    width         : 100%;
+
+}
+
+.register-input input {
+    padding         : 1rem .5rem .5rem .5rem;
+    width           : 100%;
+    font-size       : 16px;
+    font-weight     : bold;
+    background-color: rgb(224, 241, 224);
+    border-radius   : 4px;
+    border          : 1px solid lightgray
+}
+
+.register-container {
+    display    : flex;
+    align-items: center;
+}
+
+.register-container input {
+    font-size       : 24px;
+    font-weight     : bold;
+    background-color: rgb(168, 219, 168);
+    border-radius   : 4px;
+    border          : 1px solid lightgray;
+    width           : 10rem;
+    height          : 3rem;
+}
+
+.register-container input:hover {
+    background: rgb(105, 168, 105);
+}
+
+.register-container span {
+    margin-left: 10px;
+}
+
+.register-container a {
+    text-decoration: none;
+    font-weight    : bold;
+}
+
+
+.register-input label {
+    position      : absolute;
+    text-transform: uppercase;
+    color         : gray;
+    top           : 0;
+    left          : 15px;
+    font-weight   : bold;
+}
+
+
+.profile-register-gender {
+    display        : flex;
+    align-items    : center;
+    flex-direction : row;
+    justify-content: space-around;
+    width          : 100%;
+}
+
+.profile-register-gender label {
+    position: relative;
+    left    : 0px;
+}
+
+.profile-register-gender h4 {
+    text-transform: uppercase;
+    color         : gray;
+}
+
+.profile-register-gender-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.register-card-container {
+    width: 100%;
+}
+
+.card-security-container {
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+}
+
+
+@media all and (max-width: 600px) {
+    .register-container {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+        width         : 100%;
+    }
+}
+
+@media all and (max-width: 360px) {
+
+    .register-card-container,
+    .card-security-container {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+        width         : 100%;
+    }
+
+}

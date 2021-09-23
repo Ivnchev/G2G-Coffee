@@ -1,0 +1,36 @@
+.shop-heading-wrapper {
+    height             : 250px;
+    background         : url('https://cdn.pixabay.com/photo/2018/04/23/20/23/hot-coffee-3345394_960_720.jpg');
+    background-repeat  : no-repeat;
+    background-size    : cover;
+    background-position: center;
+    position           : relative;
+    display            : flex;
+    flex-direction     : column;
+    align-items        : center;
+}
+
+.shop-heading-wrapper h1 {
+    color         : rgb(147, 212, 8);
+    font-size     : 60px;
+    margin-left   : 20rem;
+    margin-top    : 5rem;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+}
+
+
+
+
+@media all and (max-width: 600px) {
+    .shop-heading-wrapper h1 {
+        margin-left: 10rem;
+        font-size  : 50px;
+    }
+}
+
+@media all and (max-width: 420px) {
+    .shop-heading-wrapper h1 {
+        margin-left: 0rem;
+    }
+}

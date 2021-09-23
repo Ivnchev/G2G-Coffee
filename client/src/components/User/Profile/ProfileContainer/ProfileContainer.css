@@ -1,0 +1,55 @@
+.profile-content {
+    height         : 100%;
+    width          : 100%;
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-between;
+    margin-top     : 2rem;
+}
+
+.profile-inner-container {
+    max-height: 100%;
+    width     : 100%;
+    margin    : 0 5rem 5rem;
+}
+
+
+.profile-coffee-wrapper {
+    height        : 60vh;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.profile-coffee-wrapper h1 {
+    font-size    : 24px;
+    margin-bottom: 20px;
+    margin-top   : 0px;
+}
+
+.profile-coffee-ordered,
+.profile-coffee-favorites {
+    height                   : 90%;
+    width                    : 100%;
+    border-top-left-radius   : 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow               : 0 0 10px gray;
+    overflow-y               : auto;
+    display                  : flex;
+    flex-direction           : column;
+    align-items              : center;
+}
+
+@media all and (max-width : 1300px) {
+    .profile-content {
+        flex-direction: column;
+        width         : 80%;
+        margin-top    : 10rem;
+    }
+
+    .profile-inner-container {
+        margin: 0px;
+    }
+
+
+}

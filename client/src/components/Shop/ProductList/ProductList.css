@@ -1,0 +1,21 @@
+.shop-products-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.shop-products-title {
+    text-transform: uppercase;
+}
+
+.shop-products {
+    display       : flex;
+    flex-direction: row;
+    flex-wrap     : wrap;
+}
+
+@media all and (max-width: 650px) {
+    .shop-products {
+        flex-direction: column;
+    }
+}

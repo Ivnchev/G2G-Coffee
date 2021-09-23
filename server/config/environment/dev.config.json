@@ -1,0 +1,20 @@
+{
+    "server" : {
+        "PORT": 5000,
+        "CORS": {
+            "urls": [ "http://localhost:3000", "http://localhost" ],
+            "credentials": true,
+            "exposedHeaders": []
+        }
+    },
+    "database": {
+        "DB_URI": "mongodb://127.0.0.1:27017/",
+        "DB_NAME": "G2GCoffee" 
+    },
+    "security": {
+        "SECRET": "TOP_SECRET",
+        "COOKIE_NAME": "auth_cookie",
+        "HEADER": "x-auth",
+        "SALT_ROUNDS": 10
+    }
+}

@@ -1,0 +1,15 @@
+.profile-heading-image {
+    height             : 500px;
+    width              : 100%;
+    background         : url('../../../../assets/images/Profile/coffee-2928200_1920.jpg');
+    background-repeat  : no-repeat;
+    background-size    : cover;
+    background-position: center;
+    position           : relative;
+}
+
+.profile-heading-image h1 {
+    position: absolute;
+    top     : 10%;
+    left    : 20%;
+}

@@ -1,0 +1,39 @@
+.ordered-card-wrapper {
+    height        : 7rem;
+    width         : 100%;
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-start;
+    margin        : 10px 0px;
+}
+
+.ordered-card-container {
+    margin-left   : 2rem;
+    margin-right  : 2rem;
+    display       : flex;
+    flex-direction: column;
+    align-items   : stretch;
+    width         : 85%;
+    border-bottom : 1px solid rgb(147, 212, 8);
+}
+
+.ordered-card-container:hover {
+    background-color: rgb(230, 230, 230);
+    box-shadow      : 0 0 10px 2px lightgray;
+}
+
+.ordered-card-container h1 {
+    font-size: 22px;
+}
+
+.ordered-card-container p,
+.ordered-card-container span {
+    font-size  : 18px;
+    font-weight: 600;
+}
+
+.ordered-card-container h1,
+.ordered-card-container p,
+.ordered-card-container span {
+    margin: 2px;
+}

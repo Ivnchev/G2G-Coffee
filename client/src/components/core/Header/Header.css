@@ -1,0 +1,94 @@
+.coffee-bar {
+    background: rgb(17, 17, 17);
+    position  : relative;
+    z-index   : 1;
+}
+
+.coffee-bar::before {
+    content   : '';
+    background: rgb(17, 17, 17);
+    height    : 5rem;
+    width     : 6000px;
+    position  : absolute;
+    left      : -190%;
+    z-index   : 0;
+}
+
+.coffee-bar-wrapper {
+    display        : flex;
+    align-items    : center;
+    flex-direction : row;
+    flex-wrap      : wrap;
+    justify-content: space-between;
+    height         : 5rem;
+    margin-left    : 2%;
+    margin-right   : 2%;
+    z-index        : 1;
+}
+
+.coffee-bar-nav {
+    display                 : flex;
+    flex-direction          : row;
+    /* justify-content      : space-evenly; */
+    justify-content         : flex-end;
+    list-style              : none;
+    padding-left            : 0%;
+    /* flex-basis           : 40%; */
+    align-items             : center;
+    z-index                 : 1;
+}
+
+.coffee-bar-nav li {
+    padding-bottom: 10px;
+}
+
+.coffee-bar-wrapper a {
+    z-index: 1;
+    cursor : pointer;
+}
+
+
+.coffee-bar-mini-menu-button {
+    display: none;
+    z-index: 1;
+}
+
+.coffee-bar-mini-menu-button :nth-child(1) {
+    color       : white;
+    font-size   : 30px;
+    margin-right: 15px;
+    z-index     : 1;
+}
+
+.navbar-link {
+    text-decoration: none;
+    font-family    : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color          : rgb(126, 126, 126);
+    cursor         : pointer;
+    z-index        : 1;
+    margin         : 10px;
+}
+
+.navbar-link:hover {
+    color         : white;
+    border-bottom : 3px solid rgba(147, 212, 8, 0.8);
+    padding-bottom: 1rem;
+}
+
+
+
+.coffee-bar-logo {
+    width  : 80px;
+    z-index: 1;
+}
+
+
+@media all and (max-width: 600px) {
+    .coffee-bar-nav {
+        display: none;
+    }
+
+    .coffee-bar-mini-menu-button {
+        display: flex;
+    }
+}

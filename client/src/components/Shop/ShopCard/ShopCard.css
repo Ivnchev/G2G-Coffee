@@ -1,0 +1,87 @@
+.shop-card-wrapper {
+    border        : 1px solid lightgray;
+    height        : 32rem;
+    width         : 19rem;
+    overflow      : hidden;
+    padding       : 4px;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    position      : relative;
+    margin        : .3rem;
+}
+
+.shop-card-image-wrapper {
+    margin-top   : 3rem;
+    margin-bottom: 3rem;
+    height       : 50%;
+}
+
+
+.shop-card-image {
+    height         : 100%;
+    object-fit     : contain;
+    object-position: 100% 0;
+}
+
+
+.shop-card-more-info {
+    width   : 100%;
+    height  : 100%;
+    position: absolute;
+    display : none;
+}
+
+.shop-card-wrapper:hover .shop-card-more-info {
+    display: flex;
+}
+
+.shop-card-wrapper:hover .shop-card-image-wrapper,
+.shop-card-wrapper:hover .shop-card-container {
+    filter        : blur(6px);
+    -webkit-filter: blur(6px);
+}
+
+.shop-card-wrapper:hover .shop-card-image-wrapper {
+    transform : scale(1.2);
+    transition: 0.5s;
+}
+
+.shop-card-more-info div {
+    width         : 100%;
+    height        : 100%;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    background    : rgba(255, 255, 255, 0.5);
+    transition    : 0.3s;
+}
+
+.shop-card-info-title {
+    text-align   : center;
+    padding      : 2rem 1rem 1rem 1rem;
+    font-size    : 24px;
+    font-weight  : bold;
+    margin-bottom: 0;
+}
+
+.shop-card-info-description {
+    text-align: justify;
+    padding   : 0 2rem;
+}
+
+.shop-card-info-btn {
+    font-size       : 24px;
+    font-weight     : bold;
+    background-color: rgb(168, 219, 168);
+    border-radius   : 4px;
+    border          : 1px solid lightgray;
+    width           : 10rem;
+    height          : 3rem;
+    margin-top      : 1rem;
+    cursor          : pointer;
+}
+
+.shop-card-info-btn:hover {
+    background: rgb(105, 168, 105);
+}

@@ -1,0 +1,43 @@
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width : 5px;
+  height: 5px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: rgb(69, 69, 69)
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: rgba(147, 212, 8, .5);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(82, 117, 7)
+}
+
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
