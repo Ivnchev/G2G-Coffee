@@ -13,10 +13,10 @@ const schema = new mongoose.Schema({
         min: [12, 'Card number must be at least 12 characters !']
     },
     date: {
-        type: String,
+        type: Date,
         required: [true, 'Date is required!'],
-        minLength: [5, 'Date must be at least 10 characters !'],
-        match: [/^\d{2}\/\d{2}$/g, 'Incorrect date!']
+        match: [/^\d{4}-\d${2}$/, 'Date format is incorrect!'],
+        trim: true,
     },
     securityCode: {
         type: Number,
