@@ -3,9 +3,10 @@ import Chart from 'react-apexcharts'
 import { Component } from "react"
 
 class SellChart extends Component {
+
     constructor(props) {
         super(props);
-
+        this.currentSells = {}
         this.state = {
             options: {
                 chart: {
@@ -38,10 +39,11 @@ class SellChart extends Component {
     }
 
     componentDidMount() {
-        const currentSells = {
+        this.currentSells = {
             ...this.state.series[1],
             data: [50, 20, 50]
         }
+        const currentSells = this.currentSells
         this.setState(state => {
             return {
                 ...state,
@@ -58,6 +60,10 @@ class SellChart extends Component {
         }
     }
 
+    componentWillUnmount() {
+
+        window.onresize = () => {}
+    }
 
 
     render() {

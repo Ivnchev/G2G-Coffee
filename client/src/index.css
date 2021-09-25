@@ -26,6 +26,13 @@ body,
   background: rgb(82, 117, 7)
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px  rgb(224, 241, 224) inset !important;
+}
+
 
 
 body {
@@ -40,4 +47,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.form-error-message {
+  color      : red;
+  font-size  : 12px;
+  font-weight: bold;
+  position   : absolute;
+  right      : 5px;
+  top        : 1px
+}
+
+.form-error-color {
+  border: 2px solid red !important;
 }

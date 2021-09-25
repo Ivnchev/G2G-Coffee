@@ -54,6 +54,11 @@
     border          : 1px solid lightgray
 }
 
+.register-input #cardExpires {
+    padding: 1rem .2rem .2rem .2rem;
+    width: 10.3em;
+}
+
 .register-container {
     display    : flex;
     align-items: center;
@@ -147,4 +152,7 @@
         width         : 100%;
     }
 
+    .register-input #cardExpires {
+        width: 100%;
+    }
 }

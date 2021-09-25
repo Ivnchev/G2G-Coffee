@@ -16,6 +16,11 @@ const Panel = ({
         if (history.location.search !== "") {
             setMenu(state => ({ [history.location.search.slice(2)]: true }))
         }
+
+        return () => {
+            
+        }
+
     }, [history.location.search])
 
 

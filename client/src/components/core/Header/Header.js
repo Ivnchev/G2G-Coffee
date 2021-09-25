@@ -17,6 +17,10 @@ const Header = ({
 
     useEffect(() => {
         setSubmenu(false)
+
+        return () => {
+            
+        }
     }, [history])
 
     function toggleSubMenu() {

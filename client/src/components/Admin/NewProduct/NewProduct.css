@@ -30,7 +30,6 @@
     position      : relative;
     margin        : 1rem 0;
     width         : 100%;
-
 }
 
 .new-product-input input {
@@ -86,12 +85,13 @@
 .new-product-input label {
     position        : absolute;
     text-transform  : uppercase;
-    top             : 1.2px;
-    left            : 1.6px;
+    top             : 2px;
+    left            : 2px;
     font-weight     : bold;
     background-color: rgb(224, 241, 224);
     width           : 85%;
     padding         : 0 15px;
+    color           : gray;
 }
 
 
@@ -101,8 +101,9 @@
     align-items   : center;
 }
 
-.new-product-select h3 {
-    margin: 1rem 0 0 0;
+.new-product-container h3 {
+    margin: 0;
+    color: gray;
 }
 
 .new-product-select-wrapper {
@@ -150,7 +151,10 @@
 }
 
 
+
+
 @media all and (max-width:375px) {
+
     .new-product-select-wrapper,
     .new-product-input,
     .new-product-container {
