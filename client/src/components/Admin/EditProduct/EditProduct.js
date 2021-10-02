@@ -1,100 +1,136 @@
 import './EditProduct.css'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { useEffect, useState } from 'react';
+import productService from '../../../services/Products/ProductService';
 
-const EditProduct = (props) => {
+const EditProduct = ({
+    match,
+    history
+}) => {
 
+    const mapPropsToValues = () => ({
+        title: '',
+        imageURL: '',
+        description: '',
+        category: ''
+    })
 
-    function submitHandler(values) {
+    const [product, setProduct] = useState(mapPropsToValues())
 
-        console.log(values);
+    useEffect(() => {
+        productService.getOneProduct(match.params.id)
+            .then(res => setProduct(state => (res)))
+
+    }, [match.params.id])
+
+    function submitHandler(values, actions) {
+        productService.editProduct(match.params.id, values)
+            .then(res => {
+                actions.resetForm(mapPropsToValues())
+                history.push('/control-panel?=editProduct')
+            })
+            .catch(console.log)
     }
 
     return (
         <div className="edit-product-wrapper">
             <Formik
-                initialValues={{
-                    productName: 'espresso',
-                    productImage: 'https://cdn.pixabay.com/photo/2020/04/06/13/37/coffee-5009730_960_720.png',
-                    productDescription: 'Verry strong coffee',
-                    productCategory: 'barista'
-                }}
+                onSubmit={submitHandler}
                 validationSchema={Yup.object().shape({
-                    productName: Yup.string()
-                        .min(2, 'Too Short!')
+                    title: Yup.string()
+                        .min(5, 'Too Short!')
                         .max(10, 'Too Long!')
                         .required('Required'),
-                    productImage: Yup.string()
+                    imageURL: Yup.string()
                         .matches(/^https?:\/\//, 'Invalid URL!')
                         .required('Required'),
-                    productDescription: Yup.string()
+                    description: Yup.string()
                         .min(10, 'To Short!')
                         .max(50, 'To Long!')
                         .required('Required')
                 })}
-                onSubmit={submitHandler}
+                enableReinitialize={true}
+                initialValues={{
+                    title: product.title,
+                    imageURL: product.imageURL,
+                    description: product.description,
+                    category: product.category
+                }}
             >
-                {({ errors, touched, isSubmitting }) => (
+                {({ errors, touched, isSubmitting, values, handleChange, handleBlur }) => (
                     <Form className="edit-product-form">
                         <h1 className="edit-product-title">Edit Product</h1>
                         <div className="edit-product-errors">
                             <p className="edit-product-error"></p>
                         </div>
                         <div className="edit-product-container">
-                            <img src={"https://cdn.pixabay.com/photo/2020/04/06/13/37/coffee-5009730_960_720.png"} alt="" />
+                            <img src={product.imageURL} alt="" />
                         </div>
 
                         <div className="edit-product-input">
                             <label htmlFor="product-name"> Product Name</label>
                             <Field
                                 autoFocus
-                                name="productName"
+                                name="title"
                                 type="text"
-                                id="productName"
-                                className={errors.productName && touched.productName ? "form-error-color" : ""}
+                                id="title"
+                                className={errors.title && touched.title ? "form-error-color" : ""}
+                                value={values.title}
+                                onChange={handleChange}
                             />
-                            {errors.productName && touched.productName ? (
-                                <div className="form-error-message">{errors.productName}</div>
+                            {errors.title && touched.title ? (
+                                <div className="form-error-message">{errors.title}</div>
                             ) : null}
                         </div>
                         <div className="edit-product-input">
                             <label htmlFor="product-image"> Product Image</label>
                             <Field
                                 type="url"
-                                name="productImage"
-                                id="productImage"
+                                name="imageURL"
+                                id="imageURL"
                                 placeholder="https://example.com"
-                                className={errors.productImage && touched.productImage ? "form-error-color" : ""}
+                                className={errors.imageURL && touched.imageURL ? "form-error-color" : ""}
+                                value={values.imageURL}
+                                onChange={handleChange}
                             />
-                            {errors.productImage && touched.productImage ? (
-                                <div className="form-error-message">{errors.productImage}</div>
+                            {errors.imageURL && touched.imageURL ? (
+                                <div className="form-error-message">{errors.imageURL}</div>
                             ) : null}
                         </div>
                         <div className="edit-product-input">
                             <label htmlFor="product-description"> Product Description</label>
                             <Field
-                                type="text"
                                 as="textarea"
-                                name="productDescription"
-                                id="productDescription"
+                                type="text"
+                                name="description"
+                                id="description"
                                 cols="50"
                                 rows="10"
-                                className={errors.productDescription && touched.productDescription ? "form-error-color" : ""}
+                                className={errors.description && touched.description ? "form-error-color" : ""}
+                                value={values.description}
+                                onChange={handleChange}
                             />
-                            {errors.productDescription && touched.productDescription ? (
-                                <div className="form-error-message">{errors.productDescription}</div>
+                            {errors.description && touched.description ? (
+                                <div className="form-error-message">{errors.description}</div>
                             ) : null}
                         </div>
                         <div className="edit-product-container">
                             <h3>Product Category</h3>
                             <div className="edit-product-select-wrapper">
-                                <select id="product-category">
-                                    <option value="barista">From Barista</option>
-                                    <option value="packages">Packages</option>
-                                    <option value="accessories">Accessories</option>
-                                </select>
-                                {errors.productCategory && touched.productCategory ? (
-                                    <div>{errors.productCategory}</div>
+                                <Field
+                                    as="select"
+                                    id="product-category"
+                                    name="category"
+                                    onChange={handleChange}
+                                    value={values.category}
+                                >
+                                    <option value="coffee" >From Barista</option>
+                                    <option value="package" >Packages</option>
+                                    <option value="accessory">Accessories</option>
+                                </Field>
+                                {errors.category && touched.category ? (
+                                    <div>{errors.category}</div>
                                 ) : null}
                             </div>
                         </div>
@@ -104,7 +140,7 @@ const EditProduct = (props) => {
                     </Form>
                 )}
             </Formik>
-        </div>
+        </div >
     )
 }
 

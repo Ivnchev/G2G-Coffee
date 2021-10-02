@@ -1,41 +1,49 @@
 import './NewProduct.css'
 import { Formik, Form, Field } from 'formik';
+import { withRouter } from "react-router";
 import * as Yup from 'yup';
+import productService from '../../../services/Products/ProductService';
 
 
-const NewProduct = (props) => {
+const NewProduct = ({
+    history
+}) => {
 
+    const initialValues = {
+        title: '',
+        imageURL: '',
+        description: '',
+        category: 'coffee'
+    }
 
-    function submitHandler(values) {
-
-        console.log(values);
+    function submitHandler(values, actions) {
+        productService.postProduct(values)
+            .then(() => {
+                actions.resetForm(initialValues)
+                history.push('/control-panel?=editProduct')
+            })
     }
 
     return (
         <div className="new-product-wrapper">
             <Formik
-                initialValues={{
-                    productName: '',
-                    productImage: '',
-                    productDescription: '',
-                    productCategory: 'barista'
-                }}
+                initialValues={initialValues}
                 validationSchema={Yup.object().shape({
-                    productName: Yup.string()
-                        .min(2, 'Too Short!')
+                    title: Yup.string()
+                        .min(5, 'Too Short!')
                         .max(10, 'Too Long!')
                         .required('Required'),
-                    productImage: Yup.string()
+                    imageURL: Yup.string()
                         .matches(/^https?:\/\//, 'Invalid URL!')
                         .required('Required'),
-                    productDescription: Yup.string()
+                    description: Yup.string()
                         .min(10, 'To Short!')
                         .max(50, 'To Long!')
                         .required('Required')
                 })}
                 onSubmit={submitHandler}
             >
-                {({ errors, touched, isSubmitting }) => (
+                {({ errors, touched, isSubmitting, values, handleChange }) => (
                     <Form className="new-product-form">
                         <h1 className="new-product-title">New Product</h1>
                         <div className="new-product-errors">
@@ -45,55 +53,61 @@ const NewProduct = (props) => {
                         <div className="new-product-input">
                             <label htmlFor="productName"> Product Name</label>
                             <Field
-                                name="productName"
+                                name="title"
                                 type="text"
-                                id="productName"
+                                id="title"
                                 autoFocus
-                                className={errors.productName && touched.productName ? "form-error-color" : ""}
+                                className={errors.title && touched.title ? "form-error-color" : ""}
                             />
-                            {errors.productName && touched.productName ? (
-                                <div className="form-error-message">{errors.productName}</div>
+                            {errors.title && touched.title ? (
+                                <div className="form-error-message">{errors.title}</div>
                             ) : null}
                         </div>
 
                         <div className="new-product-input">
-                            <label htmlFor="productImage"> Product Image</label>
+                            <label htmlFor="imageURL"> Product Image</label>
                             <Field
                                 type="url"
-                                name="productImage"
-                                id="productImage"
+                                name="imageURL"
+                                id="imageURL"
                                 placeholder="https://example.com"
-                                className={errors.productImage && touched.productImage ? "form-error-color" : ""}
+                                className={errors.imageURL && touched.imageURL ? "form-error-color" : ""}
                             />
-                            {errors.productImage && touched.productImage ? (
-                                <div className="form-error-message">{errors.productImage}</div>
+                            {errors.imageURL && touched.imageURL ? (
+                                <div className="form-error-message">{errors.imageURL}</div>
                             ) : null}
                         </div>
                         <div className="new-product-input">
-                            <label htmlFor="productDescription"> Product Description</label>
+                            <label htmlFor="description"> Product Description</label>
                             <Field
                                 type="text"
                                 as="textarea"
-                                name="productDescription"
-                                id="productDescription"
+                                name="description"
+                                id="description"
                                 cols="50"
                                 rows="10"
-                                className={errors.productDescription && touched.productDescription ? "form-error-color" : ""}
+                                className={errors.description && touched.description ? "form-error-color" : ""}
                             />
-                            {errors.productDescription && touched.productDescription ? (
-                                <div className="form-error-message">{errors.productDescription}</div>
+                            {errors.description && touched.description ? (
+                                <div className="form-error-message">{errors.description}</div>
                             ) : null}
                         </div>
                         <div className="new-product-container">
                             <h3>Product Category</h3>
                             <div className="new-product-select-wrapper">
-                                <select id="productCategory" >
-                                    <option value="barista">From Barista</option>
-                                    <option value="packages">Packages</option>
-                                    <option value="accessories">Accessories</option>
-                                </select>
-                                {errors.productCategory && touched.productCategory ? (
-                                    <div>{errors.productCategory}</div>
+                                <Field
+                                    id="category"
+                                    as="select"
+                                    name="category"
+                                    onChange={handleChange}
+                                    value={values.category}
+                                >
+                                    <option value="coffee">From Barista</option>
+                                    <option value="package">Packages</option>
+                                    <option value="accessory">Accessories</option>
+                                </Field>
+                                {errors.category && touched.category ? (
+                                    <div>{errors.category}</div>
                                 ) : null}
                             </div>
                         </div>
@@ -109,4 +123,4 @@ const NewProduct = (props) => {
 }
 
 
-export default NewProduct
+export default withRouter(NewProduct) 

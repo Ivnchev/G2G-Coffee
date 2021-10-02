@@ -11,7 +11,7 @@ const fetchData = (
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
     }
-    if (method === "POST") {
+    if (method === "POST" || method === "PUT" || method === "PATCH") {
         options.body = JSON.stringify(data)
     }
 

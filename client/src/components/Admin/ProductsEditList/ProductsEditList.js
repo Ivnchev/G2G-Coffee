@@ -1,29 +1,24 @@
 import "./ProductsEditList.css"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import productService from "../../../services/Products/ProductService"
 
 
 const ProductsEditList = (props) => {
 
-    const dummyData = [
-        {
-            category: 'Coffee',
-            productName: 'Espresso',
-            _id: 1
-        },
-        {
-            category: 'Package',
-            productName: 'Espresso 1 kg',
-            _id: 2
-        },
-        {
-            category: 'Accessories',
-            productName: 'Cup',
-            _id: 3
-        },
-    ]
+    const [list, setList] = useState([])
+
+    useEffect(() => {
+        productService.getProducts()
+            .then(list => setList(state => (list)))
+            .catch(err => { console.log(err); })
+    }, [])
 
     function removeHandler(e) {
-        e.currentTarget.parentNode.remove()
+        const element = e.currentTarget.parentNode
+        productService.deleteProduct(e.currentTarget.id)
+            .then(() => { element.remove() })
+            .catch(err => { console.log(err); })
     }
 
     return (
@@ -40,12 +35,12 @@ const ProductsEditList = (props) => {
                 </thead>
                 <tbody>
                     {
-                        dummyData.map(x => (
+                        list?.map(x => (
                             <tr key={x._id}>
                                 <td data-label={x.category}>{x.category}</td>
-                                <td data-label={x.productName}>{x.productName}</td>
+                                <td data-label={x.title}>{x.title}</td>
                                 <td data-label="Edit"><Link to={`/product/${x._id}/edit`}><i className="fas fa-edit"></i></Link></td>
-                                <td data-label="Remove" onClick={removeHandler} ><i className="fas fa-trash"></i></td>
+                                <td data-label="Remove" onClick={removeHandler} id={x._id}><i className="fas fa-trash"></i></td>
                             </tr>
                         ))
                     }
