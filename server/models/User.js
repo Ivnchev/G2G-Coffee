@@ -37,7 +37,19 @@ const schema = new mongoose.Schema({
         type: String,
         default: 'user',
         enum: ['user', 'admin']
-    }
+    },
+    ordered: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'product'
+        }
+    ],
+    favorites: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'product'
+        }
+    ],
 })
 
 schema.methods.comparePasswords = function (password) {
