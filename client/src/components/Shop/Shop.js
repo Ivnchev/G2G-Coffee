@@ -1,12 +1,22 @@
 import './Shop.css'
 import ShopHeading from './ShopHeading/ShopHeading'
 import ProductList from './ProductList/ProductList'
+import { useEffect, useState } from 'react'
+import productService from '../../services/Products/ProductService'
 
 
 const Shop = (props) => {
 
+    const [products, setProducts] = useState([])
 
-    return ( 
+    useEffect(() => {
+        productService.getProducts()
+            .then(data => {
+                setProducts(state => (data))
+            })
+    }, [])
+
+    return (
         <div className="shop-wrapper">
             <ShopHeading />
             <section className="shop-products-container">
@@ -26,9 +36,14 @@ const Shop = (props) => {
                     </div>
                 </div>
                 <div>
-                    <ProductList title="Coffee 'ready 2 go' / from barista /" />
-                    <ProductList title="Packages" />
-                    <ProductList title="Accesories" />
+                    {
+                        ['coffee', 'package', 'accessory'].map(x => {
+                            const data = products.filter(p => p.category === x)
+                            return (
+                                <ProductList key={x} title={x} data={data} />
+                            )
+                        })
+                    }
                 </div>
 
             </section>

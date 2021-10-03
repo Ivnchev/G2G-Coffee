@@ -3,22 +3,19 @@ import ShopCard from '../ShopCard/ShopCard'
 
 
 const ProductList = ({
-    title
+    title,
+    data
 }) => {
-
 
     return (
         <div className="shop-products-wrapper">
             <h2 className="shop-products-title">{title}</h2>
             <article className="shop-products">
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
-                <ShopCard />
+                {
+                    data.map(x => (
+                        <ShopCard key={x._id} data={x} />
+                    ))
+                }
             </article>
         </div>
     )

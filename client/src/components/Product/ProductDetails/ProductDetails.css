@@ -36,7 +36,17 @@
     margin: 20px;
 }
 
+.product-image-details {
+    max-width: 350px;
+}
+
+.product-image-details img {
+    width : 100%;
+    height: 100%;
+}
+
 .product-details-inner-wrapper {
+    flex-basis     : 50%;
     display        : flex;
     flex-direction : column;
     align-items    : center;
@@ -100,6 +110,17 @@
 
 .fas.fa-heart {
     color    : pink;
+    font-size: 2rem;
+    margin   : 10px;
+}
+
+.fas.fa-heart-broken:hover {
+    color : rgb(241, 78, 105);
+    cursor: pointer;
+}
+
+.fas.fa-heart-broken {
+    color    : rgb(255, 137, 156);
     font-size: 2rem;
     margin   : 10px;
 }
