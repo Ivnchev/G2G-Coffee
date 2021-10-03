@@ -15,10 +15,10 @@ router.route('/')
                 res.status(200).json(data)
             }).catch(next)
     })
-    
+
 router.route('/:id')
     .get(function (req, res, next) {
-        productsService.getOne(req.params.id)
+        productsService.getOne(req.params.id, req.user._id)
             .then(data => {
                 res.json(data)
             })

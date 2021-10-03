@@ -1,7 +1,7 @@
 const productModel = require('../../models/Product')
 const userModel = require('../../models/User')
 
-const favProduct = async (userId, productId) => {
+const favProduct = async (productId, userId) => {
     let user
     try {
         await productModel.findByIdAndUpdate({ _id: productId }, { $push: { favorites: userId } }, { runValidators: true })
@@ -13,10 +13,11 @@ const favProduct = async (userId, productId) => {
     return user
 }
 
-const removefavProduct = async (userId, productId) => {
+const removefavProduct = async (productId, userId) => {
     let user
     try {
-        user = await userModel.findByIdAndUpdate({ _id: userId }, { $push: { favorites: productId } }, { runValidators: true })
+        await productModel.findByIdAndUpdate({ _id: productId }, { $pull: { favorites: userId } }, { runValidators: true })
+        user = await userModel.findByIdAndUpdate({ _id: userId }, { $pull: { favorites: productId } }, { runValidators: true })
     } catch (err) {
         throw err
     }

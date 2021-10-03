@@ -3,7 +3,7 @@ const userModel = require('../../models/User')
 
 const getAll = async (isAdmin, userId) => {
 
-    return productModel.find({})
+    return productModel.find({}).sort({ "category": 1 })
 
     // if (isAdmin) {
     //     return await claimModel.find({})
@@ -15,7 +15,7 @@ const getAll = async (isAdmin, userId) => {
     //     .populate({ path: 'creator', select: 'username' })
     //     .populate('trackingNumber')
 }
-const getOne = async (id) => await productModel.findById(id)
+const getOne = async (id, userId) => await productModel.findById(id).populate('favorites')
 
 const updateOne = async (id, rowData) => {
 

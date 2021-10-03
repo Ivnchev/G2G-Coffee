@@ -4,7 +4,7 @@ const { security: { SALT_ROUNDS, COOKIE_NAME } } = require('../../config/environ
 
 const getOne = async function (id) {
     try {
-        const data = await User.findById(id).populate('shipments').populate('claims')
+        const data = await User.findById(id).populate('favorites').populate('ordered')
         return data
     } catch (err) {
         throw err
