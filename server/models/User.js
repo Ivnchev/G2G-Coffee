@@ -41,7 +41,7 @@ const schema = new mongoose.Schema({
     ordered: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'product'
+            ref: 'order'
         }
     ],
     favorites: [

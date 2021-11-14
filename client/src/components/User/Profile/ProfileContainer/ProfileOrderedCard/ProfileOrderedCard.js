@@ -1,16 +1,25 @@
 import './ProfileOrderedCard.css'
 
 
-const ProfileOrderedCard = (props) => {
-
-
-    return (
+const ProfileOrderedCard = ({
+    data
+}) => {
+    return ( 
         <div className="ordered-card-wrapper">
             <div className="ordered-card-container">
-                <h1>Espresso</h1>
-                <span>Ordered at: 01/01/2021 - 14:25</span>
-                <p>Will be ready at: <span>14:35</span></p>
-                <p>Not Paid</p>
+                <h1>{data.product?.title}</h1>
+                <span>Ordered at: {new Date(data.createdAt).toLocaleDateString()}</span>
+                {
+                    data.estimateTime !== 'NA'
+                        ? (
+                            <p>Will be ready at: <span>{
+                                new Date(new Date(data.createdAt).getTime() + Number(data.estimateTime) * 60000).toLocaleTimeString()
+                            }</span></p>
+                        )
+                        : ''
+                }
+                <p>Quantity: {data.quantity}</p>
+                <p className="bill">{data.paid ? 'Paid' : `Not Paid, Bill: ${data.bill} $.`} </p>
             </div>
         </div>
     )

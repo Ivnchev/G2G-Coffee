@@ -1,12 +1,29 @@
 const productModel = require('../../models/Product')
+const orderModel = require('../../models/Order')
 const userModel = require('../../models/User')
 
 
-const orderProduct = async (productId, userId) => {
-    let product
+const getOrders = async () => {
+    let orders
     try {
-        product = await productModel.findByIdAndUpdate({ _id: productId }, { $push: { ordered: userId } }, { runValidators: true })
-        await userModel.findByIdAndUpdate({ _id: userId }, { $push: { ordered: productId } }, { runValidators: true })
+        orders = await orderModel
+            .find({})
+            .sort({ 'createdAt': -1 })
+            .populate('product')
+    } catch (err) {
+        throw err
+    }
+    return orders
+}
+
+
+const orderProduct = async (data) => {
+    let product
+    let order
+    try {
+        order = await orderModel.create(data)
+        product = await productModel.findByIdAndUpdate({ _id: data.product._id }, { $push: { ordered: order } }, { runValidators: true })
+        await userModel.findByIdAndUpdate({ _id: data.user._id }, { $push: { ordered: order } }, { runValidators: true })
     } catch (err) {
         throw err
     }
@@ -26,6 +43,7 @@ const removeOrderProduct = async (userId, productId) => {
 }
 
 module.exports = {
+    getOrders,
     orderProduct,
     removeOrderProduct,
 }

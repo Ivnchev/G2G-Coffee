@@ -13,14 +13,15 @@ const EditProduct = ({
         title: '',
         imageURL: '',
         description: '',
-        category: ''
+        category: '',
+        price: ''
     })
 
     const [product, setProduct] = useState(mapPropsToValues())
 
     useEffect(() => {
         productService.getOneProduct(match.params.id)
-            .then(res => setProduct(state => (res)))
+            .then(res => setProduct(s => (res)))
 
     }, [match.params.id])
 
@@ -48,6 +49,10 @@ const EditProduct = ({
                     description: Yup.string()
                         .min(10, 'To Short!')
                         .max(50, 'To Long!')
+                        .required('Required'),
+                    price: Yup.number()
+                        .min(1, 'At least 1$ !')
+                        .max(20, 'Less than 20$ !')
                         .required('Required')
                 })}
                 enableReinitialize={true}
@@ -55,7 +60,8 @@ const EditProduct = ({
                     title: product.title,
                     imageURL: product.imageURL,
                     description: product.description,
-                    category: product.category
+                    category: product.category,
+                    price: product.price
                 }}
             >
                 {({ errors, touched, isSubmitting, values, handleChange, handleBlur }) => (
@@ -115,6 +121,20 @@ const EditProduct = ({
                                 <div className="form-error-message">{errors.description}</div>
                             ) : null}
                         </div>
+
+                        <div className="new-product-input">
+                            <label htmlFor="productPrice"> Product Price</label>
+                            <Field
+                                name="price"
+                                type="number"
+                                id="price"
+                                className={errors.price && touched.price ? "form-error-color" : ""}
+                            />
+                            {errors.price && touched.price ? (
+                                <div className="form-error-message">{errors.price}</div>
+                            ) : null}
+                        </div>
+
                         <div className="edit-product-container">
                             <h3>Product Category</h3>
                             <div className="edit-product-select-wrapper">

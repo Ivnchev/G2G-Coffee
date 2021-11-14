@@ -13,7 +13,8 @@ const NewProduct = ({
         title: '',
         imageURL: '',
         description: '',
-        category: 'coffee'
+        category: 'coffee',
+        price: ''
     }
 
     function submitHandler(values, actions) {
@@ -39,6 +40,10 @@ const NewProduct = ({
                     description: Yup.string()
                         .min(10, 'To Short!')
                         .max(50, 'To Long!')
+                        .required('Required'),
+                    price: Yup.number()
+                        .min(1, 'At least 1$ !')
+                        .max(20, 'Less than 20$ !')
                         .required('Required')
                 })}
                 onSubmit={submitHandler}
@@ -92,6 +97,21 @@ const NewProduct = ({
                                 <div className="form-error-message">{errors.description}</div>
                             ) : null}
                         </div>
+
+                        <div className="new-product-input">
+                            <label htmlFor="productPrice"> Product Price</label>
+                            <Field
+                                name="price"
+                                type="number"
+                                id="price"
+                                className={errors.price && touched.price ? "form-error-color" : ""}
+                            />
+                            {errors.price && touched.price ? (
+                                <div className="form-error-message">{errors.price}</div>
+                            ) : null}
+                        </div>
+
+
                         <div className="new-product-container">
                             <h3>Product Category</h3>
                             <div className="new-product-select-wrapper">

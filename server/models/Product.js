@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
     ordered: [
         {
             type: mongoose.Types.ObjectId,
-            ref: 'user'
+            ref: 'order'
         }
     ],
     favorites: [
@@ -19,20 +19,25 @@ const schema = new mongoose.Schema({
         type: String,
         required: [true, 'Title is required!'],
         minLength: [5, 'Title must be at least 5 characters !'],
-        maxLength: [10, 'Description should be max 50 characters !']
-
+        maxLength: [10, 'Title should be maximum 10 characters !']
     },
     description: {
         type: String,
         required: [true, 'Description is required!'],
         minLength: [10, 'Description must be at least 10 characters !'],
-        maxLength: [50, 'Description should be max 50 characters !']
+        maxLength: [50, 'Description should be maximum 50 characters !']
     },
     imageURL: {
         type: String,
         required: [true, 'Image is required!'],
         match: [/^https?:\/\//, 'Image should be a valid http url!'],
         default: '../../assets/images/user-logo.png',
+    },
+    price: {
+        type: String,
+        required: [true, 'Price is required!'],
+        min: [1, 'Price must be at least 1 dollar !'],
+        max: [20, 'Price should be maximum 20 dollars !']
     },
     category: {
         type: String,

@@ -22,7 +22,8 @@ const ProductDetails = ({
                 userService.user(context.auth._id)
             ]).then(([product, user]) => {
                 setProduct(s => (product))
-                if (user.favorites.includes(product._id)) {
+                const isFav = user.favorites.find(x => x._id.toString() === product._id)
+                if (isFav) {
                     setFav(s => (true))
                 }
             }).catch(console.log)
@@ -55,6 +56,7 @@ const ProductDetails = ({
                         <div className="product-details-inner-wrapper">
                             <div className="product-details-description">
                                 <p>{product.description}</p>
+                                <p>Price: <span>{product.price} $</span></p>
                             </div>
                             <div className="product-details-buttons">
                                 <Link to={`/product/${product._id}/order`}>

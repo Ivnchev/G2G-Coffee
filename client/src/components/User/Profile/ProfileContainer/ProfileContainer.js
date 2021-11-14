@@ -1,10 +1,21 @@
 import './ProfileContainer.css'
 import ProfileOrderedCard from './ProfileOrderedCard/ProfileOrderedCard'
 import ProfileFavoritesCard from './ProfileFavoritesCard/ProfileFavoritesCard'
+import { useState, useEffect } from 'react'
+import orderService from '../../../../services/Order/OrderService'
 
+const ProfileContainer = ({
+    favorites,
+    ordered
+}) => {
 
-const ProfileContainer = (props) => {
+    const [orders, setOrders] = useState([])
 
+    useEffect(() => {
+        orderService.getOrders()
+            .then(data => setOrders(() => (data)))
+            .catch(console.log)
+    }, [])
 
     return (
         <article className="profile-content">
@@ -12,15 +23,10 @@ const ProfileContainer = (props) => {
                 <article className="profile-coffee-wrapper">
                     <h1>Favorites</h1>
                     <div className="profile-coffee-favorites">
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
-                        <ProfileFavoritesCard />
+                        {
+                            favorites?.map(x => <ProfileFavoritesCard key={x._id} data={x} />)
+                        }
+
                     </div>
                 </article>
             </div>
@@ -28,13 +34,10 @@ const ProfileContainer = (props) => {
                 <article className="profile-coffee-wrapper">
                     <h1>History</h1>
                     <div className="profile-coffee-ordered">
-                        <ProfileOrderedCard />
-                        <ProfileOrderedCard />
-                        <ProfileOrderedCard />
-                        <ProfileOrderedCard />
-                        <ProfileOrderedCard />
-                        <ProfileOrderedCard />
-                        <ProfileOrderedCard />
+                        {
+                            orders?.map(x => <ProfileOrderedCard key={x._id} data={x} />)
+                        }
+
                     </div>
                 </article>
             </div>

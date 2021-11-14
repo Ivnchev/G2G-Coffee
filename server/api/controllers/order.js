@@ -2,8 +2,14 @@ const router = require('express').Router()
 const orderService = require('../services/order.service')
 
 router.route('/')
+    .get(function (req, res, next) {
+        orderService.getOrders()
+            .then(data => {
+                res.status(200).json(data)
+            }).catch(next)
+    })
     .post(function (req, res, next) {
-        orderService.orderProduct(req.params.id, req.user._id)
+        orderService.orderProduct(req.body)
             .then(data => {
                 res.status(200).json(data)
             }).catch(next)

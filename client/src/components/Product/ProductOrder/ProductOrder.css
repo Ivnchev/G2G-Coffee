@@ -32,6 +32,11 @@
     background     : rgba(255, 255, 255, 0.5);
 }
 
+.order-form-price {
+    margin    : 0;
+    font-style: italic;
+}
+
 .order-form-input {
     display       : flex;
     flex-direction: row;
@@ -53,7 +58,9 @@
 }
 
 .order-form-container {
-    width: 100%;
+    width     : 100%;
+    position  : relative;
+    margin-top: 10px;
 }
 
 .order-form-container .submit {
@@ -75,7 +82,12 @@
 }
 
 .order-form-container input {
-    width : 5em;
+    width : 95%;
+    height: 1em;
+}
+
+.order-form-container .payment {
+    width : 5rem;
     height: 1.5em;
 }
 
@@ -86,12 +98,36 @@
     margin        : 1rem 0 2rem 0;
 }
 
+.order-form-container .quantity-label {
+    position        : absolute;
+    text-transform  : uppercase;
+    top             : 2px;
+    left            : 2px;
+    font-weight     : bold;
+    background-color: rgb(224, 241, 224);
+    width           : 85%;
+    padding         : 0 15px;
+    color           : gray;
+    margin          : 0;
+}
+
+.order-form-container .quantity {
+    padding         : 1.5rem .5rem .5rem .5rem;
+    font-size       : 16px;
+    font-weight     : bold;
+    background-color: rgb(224, 241, 224);
+    border-radius   : 4px;
+    border          : 1px solid lightgray
+}
+
+
 /* SELECT */
 
 .order-form-container {
     display       : flex;
     flex-direction: column;
     align-items   : center;
+    position      : relative;
 }
 
 .order-form-select h3 {

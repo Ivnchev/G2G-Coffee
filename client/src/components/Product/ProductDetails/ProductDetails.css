@@ -36,6 +36,15 @@
     margin: 20px;
 }
 
+.product-details-description :nth-child(2) {
+    margin     : 0;
+    margin-top : 2rem;
+    font-weight: bold;
+    font-style : italic;
+    font-size  : 1.2rem;
+    text-align : center;
+}
+
 .product-image-details {
     max-width: 350px;
 }
@@ -57,9 +66,9 @@
     display        : flex;
     align-items    : center;
     justify-content: space-between;
-    width          : 70%;
+    width          : 100%;
     box-sizing     : border-box;
-    margin-top     : 5rem;
+    margin-top     : 2rem;
 }
 
 .product-details-buttons a {

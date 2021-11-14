@@ -1,5 +1,5 @@
 .ordered-card-wrapper {
-    height        : 7rem;
+    height        : 8rem;
     width         : 100%;
     display       : flex;
     flex-direction: column;
@@ -24,6 +24,10 @@
 
 .ordered-card-container h1 {
     font-size: 22px;
+}
+
+.ordered-card-container .bill {
+    font-weight: bold;
 }
 
 .ordered-card-container p,

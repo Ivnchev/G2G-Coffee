@@ -1,12 +1,12 @@
 import './ProfileHeader.css'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import GlobalContext from '../../../../contexts/global/GlobalContext'
 
 
-const ProfileHeader = (props) => {
 
-    const [globalState] = useContext(GlobalContext)
+const ProfileHeader = ({
+    user
+}) => {
+
 
     return (
         <header className="profile-header-wrapper">
@@ -15,20 +15,20 @@ const ProfileHeader = (props) => {
             </div>
             <div className="profile-header-data-wrapper">
                 <div className="profile-header-container">
-                    <h3>22</h3>
-                    <p>Orders</p>
+                    <h3>{user?.favorites?.length}</h3>
+                    <p>Favorites</p>
                 </div>
                 <div className="profile-header-container">
-                    <h3>22</h3>
-                    <p>Orders</p>
+                    <h3>{user?.ordered?.length}</h3>
+                    <p>Ordered</p>
                 </div>
-                <div className="profile-header-container">
-                    <h3>22</h3>
-                    <p>Orders</p>
-                </div>
+                {/* <div className="profile-header-container">
+                    <h3>{user?.ordered?.length < 3 ? 'Master' : 'Newbie'}</h3>
+                    <p>Rank</p>
+                </div> */}
             </div>
             <div className="profile-header-data-wrapper">
-                <Link to={`/user/${globalState.auth?._id}/edit`}><button>Edit profile</button></Link>
+                <Link to={`/user/${user?._id}/edit`}><button>Edit profile</button></Link>
             </div>
         </header>
     )
