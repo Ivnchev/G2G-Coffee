@@ -1,8 +1,9 @@
 import './EditProduct.css'
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import productService from '../../../services/Products/ProductService';
+import GlobalContext from '../../../contexts/global/GlobalContext';
 
 const EditProduct = ({
     match,
@@ -17,12 +18,12 @@ const EditProduct = ({
         price: ''
     })
 
+    const dispatch = useContext(GlobalContext)[1]
     const [product, setProduct] = useState(mapPropsToValues())
 
     useEffect(() => {
         productService.getOneProduct(match.params.id)
             .then(res => setProduct(s => (res)))
-
     }, [match.params.id])
 
     function submitHandler(values, actions) {
@@ -30,8 +31,10 @@ const EditProduct = ({
             .then(res => {
                 actions.resetForm(mapPropsToValues())
                 history.push('/control-panel?=editProduct')
+            }).catch(error => {
+                dispatch({ type: 'error', payload: error })
+                actions.resetForm()
             })
-            .catch(console.log)
     }
 
     return (

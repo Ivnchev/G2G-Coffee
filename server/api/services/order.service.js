@@ -3,11 +3,11 @@ const orderModel = require('../../models/Order')
 const userModel = require('../../models/User')
 
 
-const getOrders = async () => {
+const getOrders = async (userId) => {
     let orders
     try {
         orders = await orderModel
-            .find({})
+            .find({ user: userId })
             .sort({ 'createdAt': -1 })
             .populate('product')
     } catch (err) {

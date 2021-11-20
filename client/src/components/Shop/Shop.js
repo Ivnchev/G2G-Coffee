@@ -1,11 +1,14 @@
 import './Shop.css'
 import ShopHeading from './ShopHeading/ShopHeading'
 import ProductList from './ProductList/ProductList'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import productService from '../../services/Products/ProductService'
+import GlobalContext from '../../contexts/global/GlobalContext'
 
 
 const Shop = (props) => {
+
+    const dispatch = useContext(GlobalContext)[1]
 
     const [products, setProducts] = useState([])
 
@@ -14,7 +17,11 @@ const Shop = (props) => {
             .then(data => {
                 setProducts(state => (data))
             })
-    }, [])
+            .catch(error => {
+                dispatch({ type: 'error', payload: error })
+
+            })
+    }, [dispatch])
 
     return (
         <div className="shop-wrapper">

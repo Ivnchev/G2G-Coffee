@@ -1,8 +1,10 @@
 import './NewProduct.css'
 import { Formik, Form, Field } from 'formik';
 import { withRouter } from "react-router";
+import { useContext } from 'react';
 import * as Yup from 'yup';
 import productService from '../../../services/Products/ProductService';
+import GlobalContext from '../../../contexts/global/GlobalContext';
 
 
 const NewProduct = ({
@@ -17,11 +19,16 @@ const NewProduct = ({
         price: ''
     }
 
+    const dispatch = useContext(GlobalContext)[1]
+
     function submitHandler(values, actions) {
         productService.postProduct(values)
             .then(() => {
                 actions.resetForm(initialValues)
                 history.push('/control-panel?=editProduct')
+            }).catch(error => {
+                dispatch({ type: 'error', payload: error })
+                actions.resetForm(initialValues)
             })
     }
 

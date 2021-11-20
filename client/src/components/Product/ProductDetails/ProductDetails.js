@@ -33,14 +33,14 @@ const ProductDetails = ({
     function favHandler() {
         favService.postFav(product._id, product)
             .then(x => {
-                history.push('/')
+                history.push(`/user/${context.auth._id}/profile`)
             })
     }
 
     function removeFavHandler() {
         favService.deleteFav(product._id)
             .then(x => {
-                history.push('/')
+                history.push('/shop')
             })
     }
 

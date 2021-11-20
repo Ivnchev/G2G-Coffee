@@ -2,7 +2,7 @@
 
 module.exports = function (err, req, res, next) {
     if (err.custom) {
-        return res.status(err.status).json(err.message)
+        return res.status(err.status).json(err)
     }
     if (err.stack) {
         if (err.message && err.message.includes('duplicate')) {

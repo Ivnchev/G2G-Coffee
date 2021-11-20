@@ -14,11 +14,14 @@ const Login = ({
 
     const dispatch = useContext(GlobalContext)[1]
 
-    function submitHandler(values) {
+    function submitHandler(values, { resetForm }) {
         AuthService.login(values)
             .then(res => {
                 dispatch({ type: 'auth', payload: res })
                 history.push('/')
+            }).catch(error => {
+                dispatch({ type: 'error', payload: error })
+                resetForm()
             })
     }
 

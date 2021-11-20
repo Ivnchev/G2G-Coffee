@@ -1,24 +1,30 @@
 import "./ProductsEditList.css"
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import productService from "../../../services/Products/ProductService"
+import GlobalContext from "../../../contexts/global/GlobalContext"
 
 
 const ProductsEditList = (props) => {
 
+    const dispatch = useContext(GlobalContext)[1]
     const [list, setList] = useState([])
 
     useEffect(() => {
         productService.getProducts()
             .then(list => setList(state => (list)))
-            .catch(err => { console.log(err); })
-    }, [])
+            .catch(error => {
+                dispatch({ type: 'error', payload: error })
+            })
+    }, [dispatch])
 
     function removeHandler(e) {
         const element = e.currentTarget.parentNode
         productService.deleteProduct(e.currentTarget.id)
             .then(() => { element.remove() })
-            .catch(err => { console.log(err); })
+            .catch(error => {
+                dispatch({ type: 'error', payload: error })
+            })
     }
 
     return (

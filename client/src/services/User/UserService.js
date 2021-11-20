@@ -5,8 +5,13 @@ function user(id) {
     return fetchData('users/' + id)
 }
 
+function updateUser(id, data) {
+    return fetchData('users/' + id, 'PATCH', data)
+}
+
 const userService = {
-    user
+    user,
+    updateUser
 }
 
 export default userService

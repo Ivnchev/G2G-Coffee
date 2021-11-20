@@ -1,21 +1,11 @@
 import './ProfileContainer.css'
 import ProfileOrderedCard from './ProfileOrderedCard/ProfileOrderedCard'
 import ProfileFavoritesCard from './ProfileFavoritesCard/ProfileFavoritesCard'
-import { useState, useEffect } from 'react'
-import orderService from '../../../../services/Order/OrderService'
 
 const ProfileContainer = ({
     favorites,
     ordered
 }) => {
-
-    const [orders, setOrders] = useState([])
-
-    useEffect(() => {
-        orderService.getOrders()
-            .then(data => setOrders(() => (data)))
-            .catch(console.log)
-    }, [])
 
     return (
         <article className="profile-content">
@@ -35,7 +25,7 @@ const ProfileContainer = ({
                     <h1>History</h1>
                     <div className="profile-coffee-ordered">
                         {
-                            orders?.map(x => <ProfileOrderedCard key={x._id} data={x} />)
+                            ordered?.map(x => <ProfileOrderedCard key={x._id} data={x} />)
                         }
 
                     </div>

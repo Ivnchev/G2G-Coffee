@@ -18,6 +18,7 @@ import globalReducer from './contexts/global/GlobalReducers';
 import AuthService from './services/Auth/AuthService';
 import Panel from './components/Admin/Panel/Panel';
 import EditProduct from './components/Admin/EditProduct/EditProduct';
+import ErrorContainer from './components/shared/ErrorContainer/ErrorContainer';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
       <GlobalContext.Provider value={[globalState, dispatch]}>
         <div className="app-wrapper">
           <Header />
+          <ErrorContainer />
           <main>
             <Switch>
               <Route path="/" exact component={Home} />

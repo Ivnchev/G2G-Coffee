@@ -7,6 +7,7 @@ import Submenu from './Submenu/Submenu'
 import { useState, useEffect, useContext } from 'react';
 import GlobalContext from '../../../contexts/global/GlobalContext';
 import AuthService from '../../../services/Auth/AuthService';
+import { withRouter } from "react-router";
 
 
 const Header = ({
@@ -19,7 +20,7 @@ const Header = ({
         setSubmenu(false)
 
         return () => {
-            
+
         }
     }, [history])
 
@@ -31,11 +32,12 @@ const Header = ({
         AuthService.logout()
             .then(() => {
                 dispatch({ type: 'auth', payload: {} })
+                history.push('/auth/login')
             })
     }
 
     window.onresize = function () {
-        if(window.innerWidth > 600) {
+        if (window.innerWidth > 600) {
             setSubmenu(false)
         }
     }
@@ -66,9 +68,13 @@ const Header = ({
                                         <li>
                                             <Link to={`/user/${globalState.auth?._id}/profile`} className="navbar-link">Profile</Link>
                                         </li>
-                                        <li>
-                                            <Link to="/control-panel" className="navbar-link">Control panel</Link>
-                                        </li>
+                                        {
+                                            globalState.auth.role === 'admin'
+                                                ? <li>
+                                                    <Link to="/control-panel" className="navbar-link">Control panel</Link>
+                                                </li>
+                                                : ''
+                                        }
                                         <li>
                                             <span className="navbar-link" onClick={logoutHandler}>Logout</span>
                                         </li>
@@ -90,4 +96,4 @@ const Header = ({
 }
 
 
-export default Header
+export default withRouter(Header)

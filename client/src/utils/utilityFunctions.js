@@ -15,11 +15,24 @@ const fetchData = (
         options.body = JSON.stringify(data)
     }
 
-    return fetch("http://localhost:5000/api/v1/" + url, options)
-        .then(res => res.json())
-        .catch(err => {
-            console.log(err);
-        })
+    return new Promise((resolve, reject) => {
+        fetch("http://localhost:5000/api/v1/" + url, options)
+            // .then(res => res.json())
+            .then(res => {
+                const response = res.json()
+                response
+                    .then(data => {
+                        if (res.status >= 400) {
+                            reject(data)
+                        } else {
+                            resolve(data)
+                        }
+                    })
+            })
+            .catch(error => {
+                reject(error)
+            })
+    })
 
 }
 

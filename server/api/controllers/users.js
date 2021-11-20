@@ -22,6 +22,13 @@ router.route('/:id')
             })
             .catch(next)
     })
+    .patch(function (req, res, next) {
+        userService.updateUser(req.body)
+            .then(data => {
+                res.status(200).json(data)
+            })
+            .catch(next)
+    })
     .delete(function (req, res, next) {
         userService.deleteUser(req.params.id)
             .then(data => {

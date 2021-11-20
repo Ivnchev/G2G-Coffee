@@ -22,11 +22,21 @@ const Register = ({
     }
 
 
-    function submitHandler(values) {
-        AuthService.register(values)
+    function submitHandler(values, { resetForm }) {
+        const card = {
+            cardNumber: values.cardNumber,
+            cardExpires: values.cardExpires,
+            cardSecurity: values.cardSecurity
+        }
+        const data = {...values, card}
+        console.log(data);
+        AuthService.register(data)
             .then(res => {
                 dispatch({ type: 'auth', payload: res })
                 history.push('/')
+            }).catch(error => {
+                dispatch({ type: 'error', payload: error })
+                resetForm()
             })
     }
 
@@ -108,7 +118,7 @@ const Register = ({
                                 type="password"
                                 name="password"
                                 id="password"
-                                className={errors.email && touched.email
+                                className={errors.password && touched.password
                                     ? "form-error-color" : ""}
                             />
                             {errors.password && touched.password ? (
@@ -197,7 +207,7 @@ const Register = ({
                             </div>
                         </div>
                         <div className="register-container">
-                            <input type="submit" value="Register" />
+                            <input type="submit" value="Register" disabled={isSubmitting} />
                         </div>
                         <div className="register-container">
 

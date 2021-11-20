@@ -14,19 +14,22 @@ const ProductOrder = ({
 
     const [product, setProduct] = useState({})
     const [payment, setPayment] = useState(true)
-    const context = useContext(GlobalContext)[0]
-
-    const initialValues = {
+    const [initialValues, setInitialValues] = useState({
         estimateTime: 'NA',
         quantity: ''
-    }
+    })
+    const context = useContext(GlobalContext)[0]
 
     useEffect(() => {
         let isSubscribed = true
         productService.getOneProduct(match.params.id)
-            .then(data => isSubscribed ? setProduct(s => (data)) : null)
+            .then(data => {
+                if (isSubscribed) { setProduct(s => (data)) }
+                if (data.category === 'coffee') {
+                    setInitialValues(s => ({ ...s, estimateTime: '10' }))
+                }
+            })
             .catch(err => isSubscribed ? console.log(err) : null)
-
         return () => isSubscribed = false
     }, [match.params.id])
 
@@ -36,12 +39,9 @@ const ProductOrder = ({
     }
 
     function submitHandler(values, actions) {
-        const estimateTime = (product.category === 'accessory' || product.category === 'package')
-            ? 'NA'
-            : values.estimateTime
         const data = {
             product,
-            estimateTime,
+            estimateTime: values.estimateTime,
             quantity: values.quantity,
             bill: (values.quantity * Number(product.price)),
             paid: payment,
@@ -53,17 +53,20 @@ const ProductOrder = ({
             })
     }
 
+
     return (
         <div className="order-form-layout">
             <Formik
+                enableReinitialize
                 initialValues={initialValues}
                 validationSchema={Yup.object().shape({
                     quantity: Yup.number()
                         .min(1, 'To Short!')
                         .max(10, 'To Long!')
-                        .required('Required')
+                        .required('Required'),
                 })}
                 onSubmit={submitHandler}
+
             >
                 {({ errors, touched, isSubmitting }) => (
                     <Form className="order-form">
@@ -81,11 +84,17 @@ const ProductOrder = ({
                                 : (<div className="order-form-container">
                                     <h3>Estimate Time</h3>
                                     <div className="order-form-select-wrapper">
-                                        <Field as="select" name="estimateTime">
-                                            <option value="10">10 minutes</option>
-                                            <option value="20">20 minutes</option>
-                                            <option value="30">30 minutes</option>
+                                        <Field as="select"
+                                            name="estimateTime"
+                                            id="estimateTime"
+                                        >
+                                            <option value="10" defaultChecked label="10 minutes" />
+                                            <option value="20" label="20 minutes" />
+                                            <option value="30" label="30 minutes" />
                                         </Field>
+                                        {errors.estimateTime && touched.estimateTime ? (
+                                            <div className="form-error-message">{errors.estimateTime}</div>
+                                        ) : null}
                                     </div>
                                 </div>)
                         }
