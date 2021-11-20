@@ -4,6 +4,7 @@ import AdminBar from "./AdminBar/AdminBar"
 import { useState, useEffect } from "react"
 import NewProduct from "../NewProduct/NewProduct"
 import ProductsEditList from "../ProductsEditList/ProductsEditList"
+import SetTargets from "../SetTargets/SetTargets"
 
 
 const Panel = ({
@@ -18,7 +19,7 @@ const Panel = ({
         }
 
         return () => {
-            
+
         }
 
     }, [history.location.search])
@@ -34,7 +35,9 @@ const Panel = ({
                         ? (<NewProduct />)
                         : menu.editProduct
                             ? (<ProductsEditList />)
-                            : ''
+                            : menu.setTargets
+                                ? (<SetTargets />)
+                                : ''
             }
             {/* <div style={menu.sellChart ? { display: 'flex' } : { display: 'none' }}>
                 <SellChart />

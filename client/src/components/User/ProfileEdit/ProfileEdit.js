@@ -93,9 +93,6 @@ const ProfileEdit = ({
                 {({ errors, touched, isSubmitting }) => (
                     <Form className="profile-edit-form">
                         <h1 className="profile-edit-title">Edit Profile</h1>
-                        <div className="profile-edit-errors">
-                            <p className="profile-edit-error"></p>
-                        </div>
                         <div className="profile-edit-input">
                             <label htmlFor="username">Username</label>
                             <Field
