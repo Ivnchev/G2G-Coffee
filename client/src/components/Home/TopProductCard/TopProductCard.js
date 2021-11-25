@@ -1,23 +1,27 @@
 import './TopProductCard.css'
+import { Link } from 'react-router-dom'
 
 
 
-const TopProductCard = (props) => {
-
+const TopProductCard = ({
+    data
+}) => {
 
     return (
         <div className="product-card">
-            <img className="product-card-image" src="/images/home/coffee-2559748_640.jpg" alt="" />
+            <img className="product-card-image" src={data.imageURL} alt="" />
             <div className="product-description-container">
                 <p className="product-card-title">
-                    Lorem ipsum dolor
-                        </p>
+                    {data.title}
+                </p>
                 <p className="product-card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        </p>
+                    {data.description.slice(0, 100) + '...'}
+                </p>
             </div>
             <div className="product-card-more-info">
-                <button>View more</button>
+                <Link to={`/product/${data._id}/details`}>
+                    <button>View more</button>
+                </Link>
             </div>
         </div>
     )

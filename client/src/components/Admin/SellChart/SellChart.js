@@ -1,12 +1,15 @@
 import "./SellChart.css"
 import Chart from 'react-apexcharts'
 import { Component } from "react"
+import targetService from "../../../services/Target/TargetService";
+import orderService from "../../../services/Order/OrderService";
 
 class SellChart extends Component {
 
     constructor(props) {
         super(props);
         this.currentSells = {}
+        this.currentTarget = {}
         this.state = {
             options: {
                 chart: {
@@ -27,7 +30,7 @@ class SellChart extends Component {
             series: [{
                 name: "Target Sells",
                 type: "column",
-                data: [40, 12, 45]
+                data: [0, 0, 0]
             },
             {
                 name: 'Current Sells',
@@ -39,16 +42,30 @@ class SellChart extends Component {
     }
 
     componentDidMount() {
-        this.currentSells = {
-            ...this.state.series[1],
-            data: [50, 20, 50]
-        }
-        const currentSells = this.currentSells
-        this.setState(state => {
-            return {
-                ...state,
-                series: [state.series[0], currentSells]
+
+        Promise.all([
+            orderService.getOrders('all'),
+            targetService.getTarget()
+        ]).then(([orders, [data]]) => {
+            const countData = orders.reduce((a, b) => {
+                if (!a[b.product.category]) { a[b.product.category] = 0 }
+                a[b.product.category] += 1
+                return a
+            }, {})
+            this.currentSells = {
+                ...this.state.series[1],
+                data: [countData.coffee || 0, countData.package || 0, countData.accessory || 0]
             }
+            this.currentTarget = {
+                ...this.state.series[0],
+                data: [data.coffee || 0, data.packages || 0, data.accessories || 0]
+            }
+            this.setState(state => {
+                return {
+                    ...state,
+                    series: [this.currentTarget, this.currentSells]
+                }
+            })
         })
     }
 
@@ -62,7 +79,7 @@ class SellChart extends Component {
 
     componentWillUnmount() {
 
-        window.onresize = () => {}
+        window.onresize = () => { }
     }
 
 

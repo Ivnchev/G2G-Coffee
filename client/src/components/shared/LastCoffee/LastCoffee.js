@@ -14,7 +14,7 @@ const LastCoffee = ({
     useEffect(() => {
         const currentTime = new Date(lastOrder.createdAt)
 
-        setTime(s => ({ hours: currentTime.getHours(), minutes: currentTime.getMinutes() }))
+        setTime(s => ({ hours: currentTime.getHours(), minutes: currentTime.getMinutes() < 10 ? '0' + currentTime.getMinutes() : currentTime.getMinutes() }))
 
     }, [lastOrder.createdAt])
 

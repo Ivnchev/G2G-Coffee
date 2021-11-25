@@ -19,13 +19,13 @@ const schema = new mongoose.Schema({
         type: String,
         required: [true, 'Title is required!'],
         minLength: [5, 'Title must be at least 5 characters !'],
-        maxLength: [10, 'Title should be maximum 10 characters !']
+        maxLength: [40, 'Title should be maximum 10 characters !']
     },
     description: {
         type: String,
         required: [true, 'Description is required!'],
         minLength: [10, 'Description must be at least 10 characters !'],
-        maxLength: [50, 'Description should be maximum 50 characters !']
+        maxLength: [300, 'Description should be maximum 50 characters !']
     },
     imageURL: {
         type: String,

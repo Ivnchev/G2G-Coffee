@@ -39,14 +39,14 @@ const NewProduct = ({
                 validationSchema={Yup.object().shape({
                     title: Yup.string()
                         .min(5, 'Too Short!')
-                        .max(10, 'Too Long!')
+                        .max(40, 'Too Long!')
                         .required('Required'),
                     imageURL: Yup.string()
                         .matches(/^https?:\/\//, 'Invalid URL!')
                         .required('Required'),
                     description: Yup.string()
                         .min(10, 'To Short!')
-                        .max(50, 'To Long!')
+                        .max(300, 'To Long!')
                         .required('Required'),
                     price: Yup.number()
                         .min(1, 'At least 1$ !')

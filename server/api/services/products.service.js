@@ -1,19 +1,28 @@
 const productModel = require('../../models/Product')
 const userModel = require('../../models/User')
 
-const getAll = async (isAdmin, userId) => {
-
-    return productModel.find({}).sort({ "category": 1 })
-
-    // if (isAdmin) {
-    //     return await claimModel.find({})
-    //         .populate({ path: 'creator', select: 'username' })
-    //         .populate('trackingNumber')
-    //         .sort({ 'creator': userId, 'creator': -1 })
-    // }
-    // return await claimModel.find({ creator: userId })
-    //     .populate({ path: 'creator', select: 'username' })
-    //     .populate('trackingNumber')
+const getAll = async (query) => {
+    let data
+    try {
+        if (query.offers === 'top') {
+            return productModel.find({ 'category': 'coffee' })
+                .sort({ "createdAt": 1 })
+                .limit(3)
+        }
+        if (query.offers === 'daily') {
+            return productModel.aggregate([
+                { $limit: 3 }
+            ])
+        }
+        if (query.offers === 'accessories') {
+            return productModel.find({ 'category': 'accessory' })
+                .sort({ "createdAt": 1 })
+                .limit(2)
+        }
+        return productModel.find({}).sort({ "category": 1 })
+    } catch (err) {
+        throw err
+    }
 }
 const getOne = async (id, userId) => await productModel.findById(id).populate('favorites')
 

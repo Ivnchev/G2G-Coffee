@@ -22,7 +22,7 @@ import ErrorContainer from './components/shared/ErrorContainer/ErrorContainer';
 
 function App() {
 
-  const [globalState, dispatch] = useReducer(globalReducer, {})
+  const [context, dispatch] = useReducer(globalReducer, {})
 
   useEffect(() => {
     AuthService.user()
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="app">
-      <GlobalContext.Provider value={[globalState, dispatch]}>
+      <GlobalContext.Provider value={[context, dispatch]}>
         <div className="app-wrapper">
           <Header />
           <ErrorContainer />

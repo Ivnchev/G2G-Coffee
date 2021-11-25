@@ -2,22 +2,26 @@ import './OfferCard.css'
 import { Link } from 'react-router-dom'
 
 
-const OfferCard = (props) => {
+const OfferCard = ({
+    data
+}) => {
 
 
     return (
         <div className="offer-card">
             <div className="offer-card-image-wrapper">
-                <img className="offer-card-image" src="/images/home/coffee-2559748_640.jpg" alt="" />
+                <img className="offer-card-image" src={data.imageURL} alt="" />
             </div>
-            <div className="offer-card-more-info">
-                <Link to="/">
+            <Link to={`/product/${data._id}/details`}>
+                <div className="offer-card-more-info">
                     <div className="offer-card-container">
-                        <p className="offer-card-title">Lorem ipsum dolor</p>
-                        <p className="offer-card-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                        <p className="offer-card-title">{data.title}</p>
+                        <p className="offer-card-description">
+                            {data.description.slice(0, 50) + '...'}
+                        </p>
                     </div>
-                </Link>
-            </div>
+                </div>
+            </Link>
         </div>
     )
 }

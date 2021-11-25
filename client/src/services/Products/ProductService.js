@@ -1,6 +1,9 @@
 import fetchData from "../../utils/utilityFunctions"
 
-function getProducts() {
+function getProducts(query) {
+    if (query) {
+        return fetchData(`products?offers=${query}`, 'GET')
+    }
     return fetchData('products', 'GET')
 }
 
@@ -13,7 +16,7 @@ function editProduct(id, data) {
 }
 
 function deleteProduct(id) {
-    return fetchData('products/' + id , 'DELETE')
+    return fetchData('products/' + id, 'DELETE')
 }
 
 function getOneProduct(id) {

@@ -3,9 +3,12 @@ const orderModel = require('../../models/Order')
 const userModel = require('../../models/User')
 
 
-const getOrders = async (userId) => {
+const getOrders = async (userId, query) => {
     let orders
     try {
+        if (query) {
+            return await orderModel.find({}).populate('product')
+        }
         orders = await orderModel
             .find({ user: userId })
             .sort({ 'createdAt': -1 })

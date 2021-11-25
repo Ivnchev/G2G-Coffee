@@ -4,7 +4,7 @@ const guards = require('../guards/common')
 
 router.route('/')
     .get(function (req, res, next) {
-        productsService.getAll()
+        productsService.getAll(req.query)
             .then(data => {
                 res.status(200).json(data)
             }).catch(next)

@@ -1,23 +1,23 @@
 const router = require('express').Router()
-const orderService = require('../services/order.service')
+const targetService = require('../services/targets.service')
 
 router.route('/')
     .get(function (req, res, next) {
-        orderService.getOrders(req.user._id, req.query)
+        targetService.getLastTarget()
             .then(data => {
                 res.status(200).json(data)
             }).catch(next)
     })
     .post(function (req, res, next) {
-        orderService.orderProduct(req.body)
+        targetService.postOne(req.body)
             .then(data => {
                 res.status(200).json(data)
             }).catch(next)
     })
 
 router.route('/:id')
-    .delete(function (req, res, next) {
-        orderService.removeOrderProduct(req.user._id, req.params.id)
+    .put(function (req, res, next) {
+        targetService.postOne(req.params.id, req.body)
             .then(data => {
                 res.status(200).json(data)
             }).catch(next)
