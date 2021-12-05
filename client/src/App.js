@@ -19,6 +19,10 @@ import AuthService from './services/Auth/AuthService';
 import Panel from './components/Admin/Panel/Panel';
 import EditProduct from './components/Admin/EditProduct/EditProduct';
 import ErrorContainer from './components/shared/ErrorContainer/ErrorContainer';
+import isAuth from './hoc/isAuth';
+import isAdmin from './hoc/isAdmin';
+import CustomErrorBoundary from './components/shared/CustomErrorBoundary/CustomErrorBoundary';
+import NotFound from './components/shared/NotFound/NotFound';
 
 function App() {
 
@@ -38,19 +42,22 @@ function App() {
           <Header />
           <ErrorContainer />
           <main>
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/auth/login" exact component={Login} />
-              <Route path="/auth/register" exact component={Register} />
-              <Route path="/shop" exact component={Shop} />
-              <Route path="/question-and-answers" exact component={QuestionAnswers} />
-              <Route path="/control-panel" exact component={Panel} />
-              <Route path="/user/:id/profile" exact component={Profile} />
-              <Route path="/user/:id/edit" exact component={ProfileEdit} />
-              <Route path="/product/:id/details" exact component={ProductDetails} />
-              <Route path="/product/:id/order" exact component={ProductOrder} />
-              <Route path="/product/:id/edit" exact component={EditProduct} />
-            </Switch>
+            <CustomErrorBoundary>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/auth/login" exact component={Login} />
+                <Route path="/auth/register" exact component={Register} />
+                <Route path="/shop" exact component={Shop} />
+                <Route path="/question-and-answers" exact component={QuestionAnswers} />
+                <Route path="/control-panel" exact component={isAuth(isAdmin(Panel))} />
+                <Route path="/user/:id/profile" exact component={isAuth(Profile)} />
+                <Route path="/user/:id/edit" exact component={isAuth(ProfileEdit)} />
+                <Route path="/product/:id/details" exact component={ProductDetails} />
+                <Route path="/product/:id/order" exact component={isAuth(ProductOrder)} />
+                <Route path="/product/:id/edit" exact component={isAuth(isAdmin(EditProduct))} />
+                <Route path="*" component={NotFound} />
+              </Switch>
+            </CustomErrorBoundary>
           </main>
           <Footer />
         </div>

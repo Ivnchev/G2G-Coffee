@@ -3,11 +3,11 @@
     "server" : {
         "PORT": 80,
         "CORS": {
-            "urls": [ "http://localhost:3000", "https://courier-workshop.herokuapp.com/", "http://localhost" ],
+            "urls": [ "http://localhost:3000", "https://g2g-coffee.herokuapp.com/", "http://localhost" ],
             "credentials": true,
             "exposedHeaders": []
         },
-        "baseUrl": "https://courier-workshop.herokuapp.com/"
+        "baseUrl": "https://g2g-coffee.herokuapp.com/"
     },
     "database": {
         "DB_URI": ""

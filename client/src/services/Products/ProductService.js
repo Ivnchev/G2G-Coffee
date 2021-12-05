@@ -1,6 +1,14 @@
 import fetchData from "../../utils/utilityFunctions"
 
 function getProducts(query) {
+    if (typeof query === 'object') {
+        if (query.sort) {
+            return fetchData(`products?sort=${query.sort}`, 'GET')
+        }
+        if (query.search) {
+            return fetchData(`products?search=${query.sort}`, 'GET')
+        }
+    }
     if (query) {
         return fetchData(`products?offers=${query}`, 'GET')
     }

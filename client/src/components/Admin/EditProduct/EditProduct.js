@@ -22,8 +22,17 @@ const EditProduct = ({
     const [product, setProduct] = useState(mapPropsToValues())
 
     useEffect(() => {
+        let isSubscribed = true
         productService.getOneProduct(match.params.id)
-            .then(res => setProduct(s => (res)))
+            .then(res => {
+                if (isSubscribed) {
+                    setProduct(s => (res))
+                }
+            })
+        
+        return () => {
+            isSubscribed = false
+        }
     }, [match.params.id])
 
     function submitHandler(values, actions) {

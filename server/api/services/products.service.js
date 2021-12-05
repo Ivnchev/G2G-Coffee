@@ -19,6 +19,7 @@ const getAll = async (query) => {
                 .sort({ "createdAt": 1 })
                 .limit(2)
         }
+        
         return productModel.find({}).sort({ "category": 1 })
     } catch (err) {
         throw err

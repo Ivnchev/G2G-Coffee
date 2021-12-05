@@ -16,7 +16,7 @@ const fetchData = (
     }
 
     return new Promise((resolve, reject) => {
-        fetch("http://localhost:5000/api/v1/" + url, options)
+        fetch("/api/v1/" + url, options)
             // .then(res => res.json())
             .then(res => {
                 const response = res.json()

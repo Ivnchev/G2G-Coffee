@@ -37,7 +37,7 @@ const schema = new mongoose.Schema({
         type: String,
         required: [true, 'Price is required!'],
         min: [1, 'Price must be at least 1 dollar !'],
-        max: [20, 'Price should be maximum 20 dollars !']
+        max: [100, 'Price should be maximum 20 dollars !']
     },
     category: {
         type: String,

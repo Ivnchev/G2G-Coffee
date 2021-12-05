@@ -18,7 +18,7 @@ router.route('/')
 
 router.route('/:id')
     .get(function (req, res, next) {
-        productsService.getOne(req.params.id, req.user._id)
+        productsService.getOne(req.params.id, req.user?._id)
             .then(data => {
                 res.json(data)
             })

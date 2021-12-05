@@ -50,7 +50,7 @@ const NewProduct = ({
                         .required('Required'),
                     price: Yup.number()
                         .min(1, 'At least 1$ !')
-                        .max(20, 'Less than 20$ !')
+                        .max(100, 'Less than 100$ !')
                         .required('Required')
                 })}
                 onSubmit={submitHandler}

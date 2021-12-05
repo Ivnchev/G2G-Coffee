@@ -18,6 +18,7 @@ const Login = ({
         AuthService.login(values)
             .then(res => {
                 dispatch({ type: 'auth', payload: res })
+                dispatch({ type: 'error', payload: {} })
                 history.push('/')
             }).catch(error => {
                 dispatch({ type: 'error', payload: error })
