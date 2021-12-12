@@ -31,7 +31,7 @@ const Profile = ({
 
     return (
         <div className="profile-layout">
-            <ProfileHeading />
+            <ProfileHeading user={user} />
             <section className="profile-container-section">
                 <div className="profile-wrapper">
                     <ProfileHeader user={user} />

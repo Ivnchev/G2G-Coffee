@@ -13,7 +13,7 @@ const QandAListItem = ({
             <h3>{data.title}</h3>
             <div className={'q-and-a-element-content' + ((clicked?.title === data.title) ? ' visible' : '')}>
                 <p className="q-and-a-element-paragraph">
-                    {data.answer}
+                    {data.answear}
                 </p>
             </div>
         </li>

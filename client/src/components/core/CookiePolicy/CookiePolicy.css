@@ -1,0 +1,41 @@
+.cookie-policy {
+    width          : 100%;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+}
+
+.privacy-wrapper {
+    width: 80%;
+
+}
+
+.privacy-wrapper ol {
+    margin       : 0 0 1.5em;
+    padding      : 0;
+    counter-reset: item;
+}
+
+.privacy-wrapper ol>li {
+    margin           : 0;
+    padding          : 0 0 0 2em;
+    text-indent      : -1.5em;
+    list-style-type  : none;
+    counter-increment: item;
+    text-align       : justify;
+}
+
+.privacy-wrapper h1 {
+    text-align: center;
+}
+
+
+.privacy-wrapper ol>li ::before {
+    display      : inline-block;
+    width        : 1em;
+    padding-right: 2.5em;
+    font-weight  : bold;
+    text-align   : right;
+    content      : counter(item) ".";
+}

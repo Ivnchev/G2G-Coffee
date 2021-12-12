@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import NewProduct from "../NewProduct/NewProduct"
 import ProductsEditList from "../ProductsEditList/ProductsEditList"
 import SetTargets from "../SetTargets/SetTargets"
+import SetQuestions from "../SetQuestions/SetQuestions"
 
 
 const Panel = ({
@@ -37,7 +38,9 @@ const Panel = ({
                             ? (<ProductsEditList />)
                             : menu.setTargets
                                 ? (<SetTargets />)
-                                : ''
+                                : menu.setQuestions
+                                    ? (<SetQuestions />)
+                                    : ''
             }
             {/* <div style={menu.sellChart ? { display: 'flex' } : { display: 'none' }}>
                 <SellChart />

@@ -47,9 +47,9 @@ const Footer = (props) => {
                     </div>
                     <div className="footer-row footer-terms">
                         <ul className="footer-terms-list">
-                            <li><Link to="/">Terms of Service</Link></li>
-                            <li><Link to="/">Privacy Notice</Link></li>
-                            <li><Link to="/">Cookie Policy</Link></li>
+                            <li><Link to="/terms-and-privacy">Terms of Service</Link></li>
+                            <li><Link to="/privacy-notice">Privacy Notice</Link></li>
+                            <li><Link to="/cookie-policy">Cookie Policy</Link></li>
                         </ul>
                     </div>
                     <div className="footer-row footer-terms rights">

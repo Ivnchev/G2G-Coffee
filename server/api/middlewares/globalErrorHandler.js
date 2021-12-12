@@ -10,6 +10,11 @@ module.exports = function (err, req, res, next) {
             const duplicateError = { message: `This ${error} already exist. Choose another!`, data: err.data }
             return res.status(400).json(duplicateError)
         }
+        if (err.message && err.message.includes('validation failed')) {
+            const error = err.message.match(/[\w:]+ [\w\s]+!/gi)
+            const failedError = { message: error, data: err.data }
+            return res.status(400).json(failedError)
+        }
         const messages = Object.values(err.errors).map(x => x.message)
         return res.status(400).json(messages)
     }

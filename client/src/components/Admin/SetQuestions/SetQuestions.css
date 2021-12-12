@@ -1,0 +1,169 @@
+.set-question-wrapper {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    min-height    : 80vh;
+    position      : relative;
+    width         : 100%;
+}
+
+.set-question-wrapper::before {
+    position         : absolute;
+    content          : '';
+    width            : 30%;
+    height           : 40%;
+    background       : url('https://www.seekpng.com/png/full/127-1273182_graphic-freeuse-download-coffee-tree-drawing-at-getdrawings.png');
+    background-repeat: no-repeat;
+    background-size  : cover;
+    z-index          : 0;
+    right            : -5rem;
+    opacity          : .5;
+}
+
+
+.set-question-form {
+    width          : 20rem;
+    height         : 100%;
+    padding        : 1rem 5rem;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-evenly;
+    margin         : 5rem;
+    position       : relative;
+    background     : rgba(255, 255, 255, 0.8);
+}
+
+.set-question-input {
+    display       : flex;
+    flex-direction: row;
+    align-items   : center;
+    position      : relative;
+    margin        : 1rem 0;
+    width         : 100%;
+
+}
+
+.set-question-input input {
+    padding         : 1.5rem .5rem .5rem .5rem;
+    width           : 100%;
+    font-size       : 16px;
+    font-weight     : bold;
+    background-color: rgb(224, 241, 224);
+    border-radius   : 4px;
+    border          : 1px solid lightgray
+}
+
+.set-question-container {
+    display    : flex;
+    align-items: center;
+}
+
+.set-question-container input {
+    font-size       : 24px;
+    font-weight     : bold;
+    background-color: rgb(168, 219, 168);
+    border-radius   : 4px;
+    border          : 1px solid lightgray;
+    width           : 10rem;
+    height          : 3rem;
+}
+
+.set-question-container input:hover {
+    background: rgb(105, 168, 105);
+}
+
+.set-question-container span {
+    margin-left: 10px;
+}
+
+.set-question-container a {
+    text-decoration: none;
+    font-weight    : bold;
+}
+
+
+.set-question-input label {
+    position      : absolute;
+    text-transform: uppercase;
+    top           : 0;
+    left          : 15px;
+    font-weight   : bold;
+}
+
+.set-question-input textarea {
+    padding         : 1.5rem .5rem .5rem .5rem;
+    width           : 100%;
+    font-size       : 16px;
+    font-weight     : bold;
+    background-color: rgb(224, 241, 224);
+    border-radius   : 4px;
+    border          : 1px solid lightgray;
+    resize          : none;
+}
+
+.set-question-container {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.set-question-container h3 {
+    margin: 0;
+    color: gray;
+}
+
+.set-question-select-wrapper {
+    position     : relative;
+    display      : flex;
+    width        : 20em;
+    height       : 3em;
+    border-radius: .25em;
+    overflow     : hidden;
+    box-shadow   : 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    margin       : 1rem 0 2rem 0;
+}
+
+.set-question-select-wrapper::after {
+    content         : '\25BC';
+    position        : absolute;
+    top             : -5px;
+    right           : 0;
+    padding         : 1em;
+    background-color: rgba(168, 219, 168, 1);
+    transition      : .25s all ease;
+    pointer-events  : none;
+}
+
+.set-question-select-wrapper:hover::after {
+    color: rgb(105, 168, 105);
+}
+
+.set-question-select-wrapper select {
+    appearance      : none;
+    outline         : 0;
+    border          : 0;
+    flex            : 1;
+    padding         : 0 2em;
+    color           : black;
+    font-weight     : bold;
+    background      : rgba(255, 255, 255, 0.2);
+    background-image: none;
+    cursor          : pointer;
+}
+
+.set-question-select-wrapper option {
+    color     : inherit;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+
+@media all and (max-width: 600px) {
+    .set-question-container {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+        width         : 100%;
+    }
+}

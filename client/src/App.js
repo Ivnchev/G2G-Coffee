@@ -23,6 +23,9 @@ import isAuth from './hoc/isAuth';
 import isAdmin from './hoc/isAdmin';
 import CustomErrorBoundary from './components/shared/CustomErrorBoundary/CustomErrorBoundary';
 import NotFound from './components/shared/NotFound/NotFound';
+import TermsAndPrivacy from './components/core/Terms&Privacy/Terms&Privacy';
+import PrivacyNotice from './components/core/PrivacyNotice/PrivacyNotice';
+import CookiePolicy from './components/core/CookiePolicy/CookiePolicy';
 
 function App() {
 
@@ -55,6 +58,9 @@ function App() {
                 <Route path="/product/:id/details" exact component={ProductDetails} />
                 <Route path="/product/:id/order" exact component={isAuth(ProductOrder)} />
                 <Route path="/product/:id/edit" exact component={isAuth(isAdmin(EditProduct))} />
+                <Route path="/terms-and-privacy" exact component={TermsAndPrivacy} />
+                <Route path="/privacy-notice" exact component={PrivacyNotice} />
+                <Route path="/cookie-policy" exact component={CookiePolicy} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </CustomErrorBoundary>

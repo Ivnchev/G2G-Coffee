@@ -7,14 +7,16 @@ const schema = new mongoose.Schema({
         required: [true, 'Title is required!'],
         minLength: [5, 'Title must be at least 5 characters !']
     },
-    description: {
+    answear: {
         type: String,
-        required: [true, 'Description is required!'],
-        minLength: [10, 'Description must be at least 10 characters !']
+        required: [true, 'Answear is required!'],
+        minLength: [10, 'Answear must be at least 10 characters !']
     },
-    showDetails: {
-        type: Boolean,
-        default: false
+    category: {
+        type: String,
+        required: [true, 'Category is required!'],
+        enum: ['coffee', 'package', 'accessory'],
+        default: 'coffee'
     }
 })
 

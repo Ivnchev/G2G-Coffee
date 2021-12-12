@@ -21,6 +21,7 @@ const AdminBar = ({
                     <li id="editProduct">Edit Products</li>
                     <li id="sellChart">Sells</li>
                     <li id="setTargets">Set Targets</li>
+                    <li id="setQuestions">Set Questions</li>
                 </ul>
             </div>
         </div>
