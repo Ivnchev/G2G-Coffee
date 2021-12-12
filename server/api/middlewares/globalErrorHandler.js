@@ -15,6 +15,9 @@ module.exports = function (err, req, res, next) {
             const failedError = { message: error, data: err.data }
             return res.status(400).json(failedError)
         }
+        if(err.message && err.message.includes('not a function')) {
+            return res.status(400).json({message: 'Server failed! There is no such record!', data: err.data})
+        }
         const messages = Object.values(err.errors).map(x => x.message)
         return res.status(400).json(messages)
     }

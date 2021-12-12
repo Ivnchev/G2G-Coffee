@@ -4,23 +4,44 @@ const userModel = require('../../models/User')
 const getAll = async (query) => {
     let data
     try {
-        if (query.offers === 'top') {
-            return productModel.find({ 'category': 'coffee' })
-                .sort({ "createdAt": 1 })
-                .limit(3)
+
+        const products = {
+            'top': () => {
+                return productModel.find({ 'category': 'coffee' })
+                    .sort({ "createdAt": 1 })
+                    .limit(3)
+            },
+            'daily': () => {
+                return productModel.aggregate([
+                    { $limit: 3 }
+                ])
+            },
+            'accessories': () => {
+                return productModel.find({ 'category': 'accessory' })
+                    .sort({ "createdAt": 1 })
+                    .limit(2)
+            },
+            'ascending': () => {
+                return productModel.find({}).sort({ "category": 1, "title": 1 })
+            },
+            'descending': () => {
+                return productModel.find({}).sort({ "category": 1, "title": -1 })
+            },
+            'search': data => {
+                return productModel.find({ title: { '$regex': data, $options: 'i' } })
+            }
         }
-        if (query.offers === 'daily') {
-            return productModel.aggregate([
-                { $limit: 3 }
-            ])
+
+        if (typeof query === 'object' && (query.data !== undefined || query.search !== undefined)) {
+            if (query.data) {
+                return products[query.data](query.data)
+            }
+            if (query.search) {
+                return products[Object.keys(query)[0]](query.search)
+            }
         }
-        if (query.offers === 'accessories') {
-            return productModel.find({ 'category': 'accessory' })
-                .sort({ "createdAt": 1 })
-                .limit(2)
-        }
-        
-        return productModel.find({}).sort({ "category": 1 })
+
+        return productModel.find({}).sort({ "category": 1, "title": 1 })
     } catch (err) {
         throw err
     }

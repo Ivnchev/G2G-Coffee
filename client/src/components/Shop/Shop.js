@@ -33,7 +33,7 @@ const Shop = (props) => {
 
     function sortSubmitHandler(e) {
         e.preventDefault()
-        productService.getProducts(filters.sort)
+        productService.getProducts({ sort: filters.sort })
             .then(data => {
                 setProducts(s => (data))
             })
@@ -45,9 +45,10 @@ const Shop = (props) => {
 
     function searchSubmitHandler(e) {
         e.preventDefault()
-        productService.getProducts(filters.search)
+        productService.getProducts({ search: filters.search })
             .then(data => {
                 setProducts(s => (data))
+                setFilters(s => ({ ...s, search: '' }))
             })
             .catch(error => {
                 dispatch({ type: 'error', payload: error })
@@ -82,6 +83,7 @@ const Shop = (props) => {
                                 name="search"
                                 placeholder="Search..."
                                 onChange={onChangeHandler}
+                                value={filters.search}
                             />
                             <button className="shop-sort-btn">Search</button>
                         </form>

@@ -3,14 +3,15 @@ import fetchData from "../../utils/utilityFunctions"
 function getProducts(query) {
     if (typeof query === 'object') {
         if (query.sort) {
-            return fetchData(`products?sort=${query.sort}`, 'GET')
+            return fetchData(`products?data=${query.sort}`, 'GET')
         }
-        if (query.search) {
-            return fetchData(`products?search=${query.sort}`, 'GET')
+        if (query.search && query.search !== '') {
+            return fetchData(`products?search=${query.search}`, 'GET')
         }
     }
-    if (query) {
-        return fetchData(`products?offers=${query}`, 'GET')
+
+    if (query && query.search !== '') {
+        return fetchData(`products?data=${query}`, 'GET')
     }
     return fetchData('products', 'GET')
 }

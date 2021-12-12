@@ -9,7 +9,12 @@ const ProductList = ({
 
     return (
         <div className="shop-products-wrapper">
-            <h2 className="shop-products-title">{title}</h2>
+            {
+                data.length === 0
+                    ? ''
+                    : <h2 className="shop-products-title">{title}</h2>
+            }
+
             <article className="shop-products">
                 {
                     data.map(x => (
