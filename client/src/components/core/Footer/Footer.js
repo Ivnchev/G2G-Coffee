@@ -17,7 +17,7 @@ const Footer = (props) => {
                         <ul className="footer-bar">
                             <li><img className="coffee-bar-logo footer-logo" src="/logo.svg" alt="coffee-logo" /></li>
                             <li>
-                                <Link to="/" className="footer-bar-link">About us</Link>
+                                <Link to="/about-us" className="footer-bar-link">About us</Link>
                             </li>
                             <li>
                                 <Link to="/shop" className="footer-bar-link">Make an order</Link>

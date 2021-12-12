@@ -26,6 +26,7 @@ import NotFound from './components/shared/NotFound/NotFound';
 import TermsAndPrivacy from './components/core/Terms&Privacy/Terms&Privacy';
 import PrivacyNotice from './components/core/PrivacyNotice/PrivacyNotice';
 import CookiePolicy from './components/core/CookiePolicy/CookiePolicy';
+import AboutUs from './components/core/AboutUs/AboutUs';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/terms-and-privacy" exact component={TermsAndPrivacy} />
                 <Route path="/privacy-notice" exact component={PrivacyNotice} />
                 <Route path="/cookie-policy" exact component={CookiePolicy} />
+                <Route path="/about-us" exact component={AboutUs} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </CustomErrorBoundary>
