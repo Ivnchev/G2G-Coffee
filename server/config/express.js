@@ -28,7 +28,7 @@ module.exports = function (app) {
     app.use(logger)
 
     if (production) {
-        app.use(express.static(path.join(global._basedir, 'dist/courier-application')));
+        app.use(express.static(path.join(global._basedir, 'client')));
     }
 
 }

@@ -14,7 +14,7 @@ app.listen(PORT, () => { console.log(production ? `Server is listening on: ${bas
 
 if (production) {
     app.get("*", (req, res) => {
-        res.sendFile(path.join(global._basedir, 'dist/courier-application/index.html'));
+        res.sendFile(path.join(global._basedir, 'client/index.html'));
     });
 }
 
