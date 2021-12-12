@@ -53,11 +53,19 @@
     z-index: 1;
 }
 
-.coffee-bar-mini-menu-button :nth-child(1) {
-    color       : white;
+.coffee-bar-mini-menu-button i {
     font-size   : 30px;
     margin-right: 15px;
     z-index     : 1;
+    text-align  : center;
+}
+
+.coffee-bar-mini-menu-button .far.fa-bars {
+    color: #93D408;
+}
+
+.coffee-bar-mini-menu-button .far.fa-times {
+    color: rgb(212, 8, 8);
 }
 
 .navbar-link {
@@ -81,6 +89,9 @@
     width  : 80px;
     z-index: 1;
 }
+
+
+
 
 
 @media all and (max-width: 600px) {

@@ -49,7 +49,11 @@ const Header = ({
                     <img className="coffee-bar-logo" src="/logo.svg" alt="coffee-logo" />
                 </Link>
                 <div className="coffee-bar-mini-menu-button" onClick={toggleSubMenu}>
-                    <i className="far fa-bars"></i>
+                    {
+                        submenu 
+                        ? <i className="far fa-times"></i>
+                        : <i className="far fa-bars"></i>
+                    }
                 </div>
 
                 {
