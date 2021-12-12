@@ -93,25 +93,28 @@
 }
 
 .accessory-offers {
-    flex-grow: 1;
+    flex-grow : 1;
+    flex-basis: 110%;
 }
 
 .top-accessories {
-    display       : flex;
-    flex-direction: row;
-    flex-wrap     : wrap;
-    position      : relative;
-
+    display        : flex;
+    flex-direction : column;
+    flex-wrap      : wrap;
+    position       : relative;
+    justify-content: center;
+    align-items    : center;
 }
 
 .first-accessory-wrapper,
 .second-accessory-wrapper {
-    margin: 10px;
+    width     : 100%;
+    margin    : 10px;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .second-accessory-wrapper {
     top     : 44vh;
-    left    : 23vw;
     position: absolute;
 }
 
@@ -124,7 +127,6 @@
 
     .second-accessory-wrapper {
         left    : 0vw;
-        top     : 0vh;
         position: relative;
     }
 }
@@ -154,11 +156,6 @@
     }
 
     .offer-container {
-        display       : flex;
-        flex-direction: column;
-    }
-
-    .top-accessories {
         display       : flex;
         flex-direction: column;
     }
