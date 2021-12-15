@@ -9,7 +9,7 @@ const WeatherHeader = ({
     return (
         <div className="weather-header">
             {
-                data ? (<div className="weather-header">
+                data?.sys.country === "BG" ? (<div className="weather-header">
                     <p>{data?.name}, </p>
                     {
                         data?.main?.temp < 5
