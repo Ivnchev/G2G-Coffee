@@ -5,7 +5,8 @@ const globalReducer = (state, action) => {
         'auth': { ...state, auth: action.payload },
         'user': { ...state, user: action.payload },
         'error': { ...state, error: action.payload },
-        'order': { ...state, order: action.payload }
+        'order': { ...state, order: action.payload },
+        'weather': { ...state, order: action.payload }
     }
 
     return action.type

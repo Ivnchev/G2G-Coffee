@@ -37,7 +37,7 @@ function App() {
       .then(res => {
         dispatch({ type: 'auth', payload: res })
       })
-  }, [])
+  }, [dispatch ])
 
   return (
     <div className="app">

@@ -1,0 +1,8 @@
+.weather-header {
+    z-index        : 9999;
+    color          : white;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-around;
+    width          : 100%;
+}
