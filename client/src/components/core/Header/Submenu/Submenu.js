@@ -1,12 +1,23 @@
 import './Submenu.css'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import GlobalContext from '../../../../contexts/global/GlobalContext';
 import { useContext } from 'react';
+import AuthService from '../../../../services/Auth/AuthService';
 
 
-const Submenu = (props) => {
+const Submenu = ({
+    history
+}) => {
 
-    const [globalState] = useContext(GlobalContext)
+    const [globalState, dispatch] = useContext(GlobalContext)
+
+    function logoutHandler() {
+        AuthService.logout()
+            .then(() => {
+                dispatch({ type: 'auth', payload: {} })
+                history.push('/auth/login')
+            })
+    }
 
     return (
         <div className="coffee-bar-submenu-wrapper">
@@ -26,6 +37,9 @@ const Submenu = (props) => {
                             <li className="coffee-bar-submenu-li">
                                 <Link to="/control-panel" className="coffee-bar-submenu-link">Control panel</Link>
                             </li>
+                            <li>
+                                <span className="navbar-link" onClick={logoutHandler}>Logout</span>
+                            </li>
                         </>
                         : <>
                             <li className="coffee-bar-submenu-li">
@@ -42,4 +56,4 @@ const Submenu = (props) => {
 }
 
 
-export default Submenu
+export default withRouter(Submenu)
