@@ -14,5 +14,31 @@
 .q-and-a-sidebar-element p,
 .q-and-a-sidebar-element span {
     text-align: center;
-    margin    :  0 1.2rem;
+    margin    : 0 1.2rem;
+}
+
+@media all and (max-width: 1000px) {
+    .q-and-a-sidebar-element {
+        position  : relative;
+        margin-top: 0;
+        width     : 100%;
+    }
+}
+
+
+@media all and (max-width: 600px) {
+    .q-and-a-sidebar-element {
+        position  : relative;
+        margin-top: 0;
+        width     : 100%;
+    }
+}
+
+
+@media all and (max-width: 360px) {
+    .q-and-a-sidebar-element {
+        position  : relative;
+        margin-top: 0;
+        width     : 100%;
+    }
 }

@@ -45,3 +45,59 @@
     list-style: none;
     padding   : 0;
 }
+
+
+@media all and (max-width: 1000px) {
+    .q-and-a-content-wrapper {
+        padding-left: 0rem;
+        margin      : 0px;
+    }
+
+    .q-and-a-content {
+        padding: 1rem;
+    }
+
+    .q-and-a-sidebar {
+        position   : relative;
+        height     : 4rem;
+        width      : 100%;
+        margin-left: 0;
+    }
+}
+
+
+@media all and (max-width: 600px) {
+    .q-and-a-content-wrapper {
+        padding-left: 0rem;
+        margin      : 0px;
+    }
+
+    .q-and-a-content {
+        padding: 1rem;
+    }
+
+    .q-and-a-sidebar {
+        position   : relative;
+        height     : 4rem;
+        width      : 100%;
+        margin-left: 0;
+    }
+}
+
+@media all and (max-width: 360px) {
+    .q-and-a-content-wrapper {
+        padding-left: 0rem;
+        margin      : 0px;
+    }
+
+    .q-and-a-content {
+        padding: 1rem;
+    }
+
+    .q-and-a-sidebar {
+        position   : relative;
+        height     : 4rem;
+        width      : 100%;
+        margin-left: 0;
+    }
+}

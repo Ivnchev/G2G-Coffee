@@ -22,10 +22,6 @@ const ProfileHeader = ({
                     <h3>{user?.ordered?.length}</h3>
                     <p>Ordered</p>
                 </div>
-                {/* <div className="profile-header-container">
-                    <h3>{user?.ordered?.length < 3 ? 'Master' : 'Newbie'}</h3>
-                    <p>Rank</p>
-                </div> */}
             </div>
             <div className="profile-header-data-wrapper">
                 <Link to={`/user/${user?._id}/edit`}><button>Edit profile</button></Link>

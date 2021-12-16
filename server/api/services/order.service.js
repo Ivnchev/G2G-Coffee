@@ -6,7 +6,7 @@ const userModel = require('../../models/User')
 const getOrders = async (userId, query) => {
     let orders
     try {
-        if (query) {
+        if (Object.keys(query).length > 0) {
             return await orderModel.find({}).populate('product')
         }
         orders = await orderModel

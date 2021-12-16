@@ -8,7 +8,7 @@ const getLastTarget = async () => {
 const postOne = async (rowData) => {
     let data
     try {
-        data = Target.create(rowData, { runValidators: true })
+        data = Target.create(rowData)
     } catch (err) {
         throw err
     }
