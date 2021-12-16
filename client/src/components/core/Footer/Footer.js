@@ -27,11 +27,31 @@ const Footer = (props) => {
                             </li>
                         </ul>
                         <ul className="footer-social">
-                            <li><i className="fab fa-facebook"></i></li>
-                            <li><i className="fab fa-instagram"></i></li>
-                            <li><i className="fab fa-linkedin-in"></i></li>
-                            <li><i className="fab fa-twitter"></i></li>
-                            <li><i className="fab fa-youtube"></i></li>
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/" className="footer-bar-link">
+                                    <i className="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.instagram.com/" className="footer-bar-link">
+                                    <i className="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.linkedin.com/" className="footer-bar-link">
+                                    <i className="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.twitter.com/" className="footer-bar-link">
+                                    <i className="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://www.youtube.com/" className="footer-bar-link">
+                                    <i className="fab fa-youtube"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div className="footer-row footer-contacts">

@@ -12,7 +12,7 @@ const fetchData = (
         headers: { 'Content-Type': 'application/json' },
     }
     const url = baseUrl.includes('http') ? baseUrl : "http://localhost:5000/api/v1/" + baseUrl
-    let options = url.includes('https://fcc-weather-api.glitch.me/')
+    let options = !url.includes('localhost')
         ? { method: 'GET', headers: { 'Content-Type': 'application/json' } }
         : baseOptions
     if (method === "POST" || method === "PUT" || method === "PATCH") {
