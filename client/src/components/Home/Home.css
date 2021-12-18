@@ -71,7 +71,8 @@
 
 
 .daily-offer {
-    display: flex;
+    display   : flex;
+    flex-basis: 40%;
 }
 
 .daily-offer-wrapper {
@@ -81,6 +82,7 @@
     align-content : space-around;
     flex-wrap     : wrap;
     padding       : 0 2rem;
+    width         : 100%;
 }
 
 .daily-hot-offers {
@@ -88,6 +90,7 @@
 }
 
 .daily-offer-container {
+    width     : 100%;
     background: rgb(37, 36, 35);
     background: linear-gradient(0deg, rgba(246, 231, 207, 0.5) 0%, rgba(235, 207, 165) 71%, rgba(246, 231, 207, 0.5) 95%)
 }
