@@ -68,7 +68,6 @@ const NewProduct = ({
                                 name="title"
                                 type="text"
                                 id="title"
-                                autoFocus
                                 className={errors.title && touched.title ? "form-error-color" : ""}
                             />
                             {errors.title && touched.title ? (

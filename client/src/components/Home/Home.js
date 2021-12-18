@@ -51,7 +51,7 @@ const Home = (props) => {
                 <section className="daily-offer">
                     <div className="daily-offer-wrapper">
                         <article className="daily-offer-container">
-                            <p className="home-top-products-title">Daily offers</p>
+                            <p className="home-top-products-title">Random offers</p>
                             <div className="daily-hot-offers">
                                 {
                                     dailyProducts
