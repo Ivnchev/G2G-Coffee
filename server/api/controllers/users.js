@@ -16,14 +16,14 @@ router.route('/:id')
             .catch(next)
     })
     .put(function (req, res, next) {
-        userService.updateUser(req.body)
+        userService.updateUser(req.body, req?.params?.id)
             .then(data => {
                 res.status(200).json(data)
             })
             .catch(next)
     })
     .patch(function (req, res, next) {
-        userService.updateUser(req.body)
+        userService.updateUser(req.body, req?.params?.id)
             .then(data => {
                 res.status(200).json(data)
             })

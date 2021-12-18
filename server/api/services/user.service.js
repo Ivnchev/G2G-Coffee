@@ -16,9 +16,9 @@ const getOne = async function (id) {
 }
 
 
-const updateUser = async function ({ username, email, oldPassword, newPassword, cardSecurity, cardNumber, cardExpires }) {
+const updateUser = async function ({ username, email, oldPassword, newPassword, cardSecurity, cardNumber, cardExpires }, userId) {
     try {
-        const data = await User.findOne({ username }).populate('card')
+        const data = await User.findOne({ _id: userId }).populate('card')
 
         const isCorrectPassword = await data.comparePasswords(oldPassword)
         if (!isCorrectPassword) throw { message: 'Incorrect passwords!', status: 400, custom: true }
