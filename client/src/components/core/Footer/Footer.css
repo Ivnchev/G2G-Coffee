@@ -51,9 +51,8 @@
     padding-left   : 0px;
 }
 
-.footer-social li:hover {
+.footer-social a:hover {
     color: rgba(147, 212, 8, .8);
-    ;
     cursor: pointer;
 }
 

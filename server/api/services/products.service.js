@@ -11,10 +11,19 @@ const getAll = async (query) => {
                     .sort({ "createdAt": 1 })
                     .limit(3)
             },
-            'daily': () => {
-                return productModel.aggregate([
-                    { $limit: 3 }
-                ])
+            'daily': async () => {
+
+                try {
+                    const count = await productModel.count()
+                    const random = Math.floor(Math.random() * count);
+                    return productModel.aggregate([
+                        { $skip: random },
+                        { $limit: 3 }
+                    ])
+                } catch (err) {
+                    throw err
+                }
+
             },
             'accessories': () => {
                 return productModel.find({ 'category': 'accessory' })

@@ -12,9 +12,9 @@ const fetchData = (
         headers: { 'Content-Type': 'application/json' },
     }
     const url = baseUrl.includes('http') ? baseUrl : "http://localhost:5000/api/v1/" + baseUrl
-    let options = !url.includes('localhost')
-        ? { method: 'GET', headers: { 'Content-Type': 'application/json' } }
-        : baseOptions
+    let options = !url.match(/(weather)|(facebook)|(youtube)|(linkedin)|(instagram)|(twitter)/g)
+        ? baseOptions
+        : { method: 'GET', headers: { 'Content-Type': 'application/json' } }
     if (method === "POST" || method === "PUT" || method === "PATCH") {
         options.body = JSON.stringify(data)
     }

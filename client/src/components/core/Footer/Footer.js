@@ -28,27 +28,27 @@ const Footer = (props) => {
                         </ul>
                         <ul className="footer-social">
                             <li>
-                                <a target="_blank" href="https://www.facebook.com/" className="footer-bar-link">
+                                <a target="_blank" rel="noreferrer" href="https://www.facebook.com/" className="footer-bar-link">
                                     <i className="fab fa-facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.instagram.com/" className="footer-bar-link">
+                                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/" className="footer-bar-link">
                                     <i className="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.linkedin.com/" className="footer-bar-link">
+                                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/" className="footer-bar-link">
                                     <i className="fab fa-linkedin-in"></i>
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.twitter.com/" className="footer-bar-link">
+                                <a target="_blank" rel="noreferrer" href="https://www.twitter.com/" className="footer-bar-link">
                                     <i className="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.youtube.com/" className="footer-bar-link">
+                                <a target="_blank" rel="noreferrer" href="https://www.youtube.com/" className="footer-bar-link">
                                     <i className="fab fa-youtube"></i>
                                 </a>
                             </li>
